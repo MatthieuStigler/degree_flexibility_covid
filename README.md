@@ -6,7 +6,7 @@ It is there recommended to run the script from Rstudio by loading the Rproject `
 
 ## Data dissemination
 
-This dataset offers aggregated and transformed data derived from Google Mobility and Safegraph. To respect their data use agreements, we only provide anonymized county-level information.
+This dataset offers aggregated and transformed data derived from Google Mobility, Safegraph, Cuebiq, and PlaceIQ. To respect their data use agreements, we only provide anonymized county-level information.
 
 ## Description
 
