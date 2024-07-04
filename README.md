@@ -21,3 +21,18 @@ This contains the folders:
   - `merged_panel_did.rds` the main dataset, in R's `.rds` format.
   - `merged_panel_event_dummies.rds` the main dataset in event study format
 - output_replicate: output fugures/tables
+
+
+## R packages
+
+This project was configured with `renv`, although by fedault it is deactivated. To activate it, and hence get the same package versions as used here, run: 
+
+```
+renv::activate()
+renv::restore()
+```
+
+The project also uses two non-CRAN packages:
+
+- library("matPkg") version 0.2.50, use: `remotes::install_github("MatthieuStigler/matPkg", upgrade = "never")`
+- library("multidiff") version 0.3.0, use: `remotes::install_github("MatthieuStigler/multiDiff", upgrade = "never")`

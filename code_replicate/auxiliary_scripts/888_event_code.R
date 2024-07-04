@@ -1,8 +1,9 @@
 library("tidyverse")
-library("matPkg")
+library("matPkg") # remotes::install_github("MatthieuStigler/matPkg", upgrade = "never")
 library("lfe")
 library("stats")
 library("broom")
+library("multidiff") # remotes::install_github("MatthieuStigler/multiDiff", upgrade = "never")
 
 
 
