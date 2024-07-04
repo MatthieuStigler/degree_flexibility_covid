@@ -13,7 +13,7 @@ map<-purrr::map #For the nice iterations
 select<-dplyr::select
 if(!require(matPkg)) remotes::install_github("MatthieuStigler/matPkg", upgrade = "never")
 
-source("code_replicate/0_auxiliary_scripts/888_table_to_pdf.R")
+source("code_replicate/auxiliary_scripts/888_table_to_pdf.R")
 
 options(scipen=999)
 
@@ -39,7 +39,7 @@ all_vars <- c(mobil_vars, as.character(other_vars$covariate_name))
 glimpse(did)
 
 did_mobil <- did %>%
-  select(State_name, County_name, FIPS, Date,
+  select(FIPS, Date,
          all_of(all_vars))
 
 did_mobil
@@ -128,8 +128,7 @@ did_mobil_l %>%
 did_mobil_l %>% 
   filter(list_var %in% mobil_vars) %>% 
   group_by(list_var, FIPS) %>% 
-  summarise(#n_FIPS = n_distinct(FIPS),
-            n_days = n_distinct(Date)) %>% 
+  summarise(n_days = n_distinct(Date)) %>% 
   ungroup() %>% 
   count(list_var, n_days, name = "n_FIPS") %>% 
   left_join(table_vars %>% 

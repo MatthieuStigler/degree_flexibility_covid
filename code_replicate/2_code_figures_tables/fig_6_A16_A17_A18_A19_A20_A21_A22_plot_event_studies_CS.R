@@ -10,20 +10,17 @@
 #---------- This code plots the alternative Callaway Santanna estimators
 #---------------------------------------------------------------------------------------------------------------
 
-#rm(list = ls()) 
-#dev.off() #clearing the plots
-getwd()
-library(tictoc)
 library(matPkg)
-my_packages <- c("tidyverse","magrittr","tictoc")
+my_packages <- c("tidyverse","magrittr")
 lapply(my_packages, library, character.only = TRUE)
 source("code_replicate/auxiliary_scripts/888_event_code.R")
 source("code_replicate/auxiliary_scripts/general_options.R")
 
 #====================================================================================
 
-pathin = "Output/regression_event_study_CS/saved_objects_cs/"
-pathout = "Output/regression_event_study_CS/plots_did_CS/all_cs_plots/"
+# pathin = "Output/regression_event_study_CS/saved_objects_cs/"
+pathin = "data_replicate/regression_event_study_CS/saved_objects_cs/"
+#pathout = "Output/regression_event_study_CS/plots_did_CS/all_cs_plots/"
 
 
 
@@ -71,7 +68,8 @@ mat_head_group(binded_tidy, specification, Included_covariates,
 
 
 ## add info
-vars_in_long <- readRDS("Output/vars_names_and_formulas/table_responses_names_long.rds")
+#vars_in_long <- readRDS("Output/vars_names_and_formulas/table_responses_names_long.rds")
+vars_in_long <- readRDS("data_replicate/table_responses_names_long.rds")
 
 all_coefs <- binded_tidy %>%
   left_join(vars_in_long %>%
@@ -204,17 +202,15 @@ table(all_coefs_all_groups$Outcome_var)
 table(all_coefs_all_groups$Treatment_var)
 table(all_coefs_all_groups$Included_covariates)
 
-Atts_plots <- all_coefs_all_groups %>%  
-  filter(specification=="level" & 
-           Treatment_var=="State SIPO" & 
-           Included_covariates=="No controls") #& Included_covariates=="prcp + snow + tmean + Cases_dummy + Deaths_dummy") 
-
-evt_plot(df = Atts_plots, color = Group_f,errorbar = T,fac1_var = Outcome_var_c) + 
-  facet_wrap(~Source_name_signed, scales = "free") + #, fac2_var = Regression) 
-  labs(color = "State SIPO treatment group")
-
-  #scale_color_manual(values = my_palette)
-ggsave(paste0(pathout,"did_cs_all_atts_level_no_controls_state_SIP.png"),width = 10, height = 10)
+        #Atts_plots <- all_coefs_all_groups %>%  
+        #  filter(specification=="level" & 
+        #           Treatment_var=="State SIPO" & 
+        #           Included_covariates=="No controls") #& Included_covariates=="prcp + snow + tmean + Cases_dummy + Deaths_dummy") 
+        #
+        #evt_plot(df = Atts_plots, color = Group_f,errorbar = T,fac1_var = Outcome_var_c) + 
+        #  facet_wrap(~Source_name_signed, scales = "free") + #, fac2_var = Regression) 
+        #  labs(color = "State SIPO treatment group")
+        #ggsave(paste0(pathout,"did_cs_all_atts_level_no_controls_state_SIP.png"),width = 10, height = 10)
 
 #------ Just completely home
 

@@ -24,7 +24,7 @@ select<-dplyr::select
 
 options(scipen = 999) # Do not print scientific notation
 set.seed(0101)
-cores_number = 10
+cores_number = 12
 parallel::detectCores() 
 getDoParWorkers() #check
 registerDoParallel(cores=cores_number)
@@ -35,8 +35,8 @@ options(stringsAsFactors = FALSE) ## Do not load strings as factors
 
 path_out = "data_replicate/regression_event_study_CS/saved_objects_cs/"
 
-# covariates = "_no_covariates" # rerun
-covariates = "_covariates_covid"
+covariates = "_no_covariates" # rerun
+#covariates = "_covariates_covid"
 
 
           #######covariates = "_weather_covariates" # NOT RAN YET
@@ -67,7 +67,7 @@ unique(missing_weather$FIPS)
 
 did.df_prepared <- did.df %>%
   mutate(Date_numeric = as.numeric(Date)) %>%
-  mutate(ID = as.integer(as.factor(GEOID))) %>%
+  mutate(ID = as.integer(as.factor(FIPS))) %>%
   mutate(County_SIP_numeric = as.integer(County_SIP_date)) %>%
   mutate(County_SIP_numeric = if_else(is.na(County_SIP_numeric),as.integer(0),County_SIP_numeric)) %>%
   mutate(County_ED_numeric = as.integer(County_ED_date)) %>%
@@ -77,7 +77,7 @@ did.df_prepared <- did.df %>%
   filter(!FIPS %in% missing_weather$FIPS ) %>%  #remove counties with missing weather data
   mutate(StatePol_ED_dummy = if_else(StatePol_ED_date<=Date,1,0))
 
-check<- did.df_prepared %>% select(GEOID, Date,StatePol_ED_dummy)
+check<- did.df_prepared %>% select(FIPS, Date,StatePol_ED_dummy)
 glimpse(did.df_prepared)  
 length(unique(did.df_prepared$ID))
 table(did.df_prepared$Date_numeric)
@@ -119,7 +119,8 @@ if(covariates == "_no_covariates") {
 
 
 
-policy_to_test <- c("StatePol_SIP","County_ED","County_SIP")
+#policy_to_test <- c("StatePol_SIP","County_ED","County_SIP")
+policy_to_test <- c("County_ED","County_SIP")
 policy_to_test_CS <- paste0(policy_to_test,"_numeric")
 
 
@@ -184,11 +185,16 @@ if(FALSE){
   ids_to_run <- c(10L, 11L, 12L, 13L, 14L, 16L, 22L, 30L, 44L, 58L)
 }
 
+#-- Delete unused vars to speed up
+
+
+## outcome_var_index = 1
 ## big loop
 foreach(outcome_var_index = 1:nrow(outcome_vars), .final = \(x) NULL) %dopar% { ## CHANGE ME TEMP!!
 
   # issue: outcome_var_index = 57
   # issue: individual_policy = policy_to_test_CS[3]
+  #individual_policy = "County_ED_numeric"
   
     # for(individual_policy in policy_to_test_CS ) {
   foreach(individual_policy = policy_to_test_CS ) %do% {
