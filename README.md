@@ -3,6 +3,7 @@
 The code is written in R, and uses an Rstudio R project which will take care of the relative paths of the different files. 
 It is there recommended to run the script from Rstudio by loading the Rproject `degree_flexibility_covid.Rproj`.
 
+The code is also hosted on https://github.com/MatthieuStigler/degree_flexibility_covid (but only the code), this is done to allow to make eventual updates to the code if mistakes are discovered. 
 
 ## Data dissemination
 
