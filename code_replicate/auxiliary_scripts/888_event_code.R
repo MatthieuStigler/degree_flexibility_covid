@@ -3,7 +3,7 @@ library("matPkg") # remotes::install_github("MatthieuStigler/matPkg", upgrade = 
 library("lfe")
 library("stats")
 library("broom")
-library("multidiff") # remotes::install_github("MatthieuStigler/multiDiff", upgrade = "never")
+library("multiDiff") # remotes::install_github("MatthieuStigler/multiDiff", upgrade = "never")
 
 
 
