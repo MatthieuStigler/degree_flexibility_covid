@@ -13,8 +13,10 @@ This dataset offers aggregated and transformed data derived from Google Mobility
 
 This contains the folders:
   
-- code replicate: code
-  - the folder `auxiliary_scripts` contains auxiliary scripts that will be called with `source()`
+- code replicate: 3 folders
+  - `auxiliary_scripts`: auxiliary scripts that will be called with `source()`
+  - `1_code_analysis`: code to produce the various DiD and event-study coefficients
+  - `2_code_figures_tables`: code to produce the figures and tables in the paper. 
 - data_replicate: input data. In particular:
   - `merged_panel_did.rds` the main dataset, in R's `.rds` format.
   - `merged_panel_event_dummies.rds` the main dataset in event study format
