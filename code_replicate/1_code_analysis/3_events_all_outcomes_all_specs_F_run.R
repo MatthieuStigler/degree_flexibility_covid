@@ -31,7 +31,6 @@ getDoParWorkers()
 run_evt_reg = T
 
 path_out = "data_replicate/regression_event_study_vanilla/all_outcomes_all_specs_with_Ftests/"
-plot_out = "output_replicate/intermed_check/saved_plots_event_studies/"
 
 df <- readRDS("data_replicate/merged_panel_event_dummies.rds") 
 
