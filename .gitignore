@@ -1,0 +1,24 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.jpg
+*.png
+*.rds
+*.Rmd
+*.tsv
+*.csv
+*.rda
+*.pdf
+*.gz
+*.zip
+*.tex
+*.out
+*.Rout
+*.dta
+*.xls*
+  *.R.out*
+  #/Output/regression_vanilla_2wayFE/**tex #does not work so far...
+  *.md
+
+Data/cases_mortality_NYT/covid-19-data-master/*
