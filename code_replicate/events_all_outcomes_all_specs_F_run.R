@@ -40,7 +40,7 @@ glimpse(df)
 #------------------------------------------------------------------------------------------------------------
 
 #-----  Get outcomes
-outcome_long <- readRDS("Output/vars_names_and_formulas/table_responses_names_long.rds") %>%
+outcome_long <- readRDS("data_replicate/table_responses_names_long.rds") %>%
   filter(Source!="Google" | specification == "level") #Keeping google in level
 
 

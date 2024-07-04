@@ -148,8 +148,7 @@ table(all_out_cleaned$Relative_time)
 table(all_out_cleaned$dep_var)
 
 #-- get correct names
-
-vars_in_long <- readRDS("Output/vars_names_and_formulas/table_responses_names_long.rds")
+vars_in_long <- readRDS("data_replicate/table_responses_names_long.rds")
 
 all_coefs <- all_out_cleaned %>%
   left_join(vars_in_long %>%
