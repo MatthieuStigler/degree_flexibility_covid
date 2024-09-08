@@ -37,11 +37,23 @@ files_keep_order
 
 
 ### Now run
-out <- map_safely(files_keep$full_path[1:2], ~source(.))
+out <- files_keep_order %>% 
+  head(2) %>% 
+  mutate(run_result = map_safely(full_path, ~source(.)))
 out
 
-has_errors(out)
-out
+
+## check errors
+has_errors(out$run_result)
+
+if(any(has_errors(out$run_result))){
+  out %>% 
+    filter(has_errors(run_result)) %>% 
+    mutate(res_error = map_chr(run_result, ~pluck(., "error") %>% as.character)) %>% 
+    select(file, res_error)
+}
+
+
 ################################
 #'## 
 ################################
