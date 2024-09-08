@@ -11,7 +11,7 @@ select<-dplyr::select
 
 #-----------------------------------------------------------------------------------------------------------
 
-weather <- read_dta("data_replicate/0_raw/DAILY_WEATHER_IDW200_2020_v2.dta") 
+weather <- read_dta("data_replicate/0_data_raw/DAILY_WEATHER_IDW200_2020_v2.dta") 
 glimpse(weather)
 summary(weather)
 length(unique(weather$fips))

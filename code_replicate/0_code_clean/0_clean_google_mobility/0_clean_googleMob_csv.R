@@ -18,7 +18,7 @@ if(!require(matPkg)) remotes::install_github("MatthieuStigler/matPkg", upgrade =
 #'## Read
 ################################
 # raw data downloaded 2020-04-26 "https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv?cachebust=911a386b6c9c230f",
-gogMob_raw <- read_csv("data_replicate/0_raw/google_mobility_raw.csv", guess_max = 500000)
+gogMob_raw <- read_csv("data_replicate/0_data_raw/google_mobility_raw.csv", guess_max = 500000)
 gogMob_raw
 max(gogMob_raw$date)
 

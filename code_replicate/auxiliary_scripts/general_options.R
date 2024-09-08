@@ -19,10 +19,10 @@ gg_height_Tex_half <- 3.3
 #'## Get cuter names for figures
 ################################
 
-table_covars <- read_rds("data_replicate/table_covariates_reg.rds")
+table_covars <- readr::read_rds("data_replicate/table_covariates_reg.rds")
 tab_covar_keep <- table_covars %>% 
-  filter(str_detect(covariate_name, "StatePol|County_ED$|County_SIP$")) %>% 
-  select(covariate_name, covariate_name_clean)  
+  dplyr::filter(stringr::str_detect(covariate_name, "StatePol|County_ED$|County_SIP$")) %>% 
+  dplyr::select(covariate_name, covariate_name_clean)  
 policy.facet.lab <- tab_covar_keep$covariate_name_clean %>% 
   set_names(tab_covar_keep$covariate_name)
 

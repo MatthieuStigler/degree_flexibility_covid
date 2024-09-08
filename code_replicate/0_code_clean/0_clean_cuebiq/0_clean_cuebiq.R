@@ -9,7 +9,7 @@ lapply(my_packages, library, character.only = TRUE)
 map<-purrr::map #For the nice iterations
 select<-dplyr::select
 
-source("Code/general_options.R")
+source("code_replicate/auxiliary_scripts/general_options.R")
 
 #---------------------------------------------------------------------------------------------------------------
 

@@ -12,7 +12,7 @@ select<-dplyr::select
 #-----------------------------------------------------------------------------------------------------------
 
 #from MIT elecions lab, https://electionlab.mit.edu/data
-elections <- read_csv("data_replicate/0_raw/countypres_2000-2016.csv")
+elections <- read_csv("data_replicate/0_data_raw/countypres_2000-2016.csv")
 
 glimpse(elections)
 

@@ -13,7 +13,7 @@ last_day <- "2021/03/21"
 #---------------------------------------------------------------------------------------------------------------
 
 #downloaded March 2022, 2021 from https://github.com/nytimes/covid-19-data/archive/master.zip
-nyt <- read_csv("data_replicate/0_raw/NYT_us-counties.csv") 
+nyt <- read_csv("data_replicate/0_data_raw/NYT_us-counties.csv") 
 
 glimpse(nyt)
 

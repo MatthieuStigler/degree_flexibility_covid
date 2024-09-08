@@ -12,7 +12,7 @@ select<-dplyr::select
 
 #Downloaded from "https://raw.githubusercontent.com/COVIDExposureIndices/COVIDExposureIndices/master/dex_data/county_dex.csv
  
-dat <- fread("data_replicate/0_raw/county_dex.csv")
+dat <- fread("data_replicate/0_data_raw/county_dex.csv")
 
 glimpse(dat)
 

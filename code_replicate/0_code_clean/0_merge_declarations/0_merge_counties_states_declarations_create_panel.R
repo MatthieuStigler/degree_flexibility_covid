@@ -11,20 +11,20 @@ select<-dplyr::select
 #-------------------------------------------- ----------------------------------------------------------------
 
 # Counties collected by MTurk + manually checked
-counties <- readRDS("data_replicate/0_raw/counties_declarations_cleaned.rds")
+counties <- readRDS("data_replicate/0_data_raw/counties_declarations_cleaned.rds")
 
 # States collected manually
-states <- readRDS("data_replicate/0_raw/clean_states_declarations.rds")
+states <- readRDS("data_replicate/0_data_raw/clean_states_declarations.rds")
 
 # Additional states from github Oct. 11, 2020
 #https://raw.githubusercontent.com/COVID19StatePolicy/SocialDistancing/master/data/USstatesCov19distancingpolicy.csv
-states_revised <- readRDS("data_replicate/0_raw/state_policies_dateissued_group.rds") %>%
+states_revised <- readRDS("data_replicate/0_data_raw/state_policies_dateissued_group.rds") %>%
   select(-StateFIPS)
 
 states_policies_both_sources <- states %>%
   left_join(states_revised, by = c("State_name" = "StateName") )
 
-cities <- readRDS("data_replicate/0_raw/cities_min_policy.rds")  
+cities <- readRDS("data_replicate/0_data_raw/cities_min_policy.rds")  
 
 merged_cleaned <- counties %>%
   left_join(states, by = "State_name") %>%
@@ -75,8 +75,7 @@ no_cases_right
 ## do these FIPS have indeed no cases? yes!
 complete_panel %>% 
   filter(FIPS%in%no_cases_right$FIPS) %>% 
-  filter(Cum_cases>0|Cum_deaths>0) %>% 
-  mat_check_0row()
+  filter(Cum_cases>0|Cum_deaths>0) 
 
 ## check cases but no declaration?
 no_cases_left <-  first_cases_dates_df%>% 
@@ -101,7 +100,7 @@ write_rds(merged_cleaned_cases,
 #----------------------------------------------------------------------------------------------
 
 # From MTurk and manually checked, put into panel
-counties_panel <- readRDS("data_replicate/0_raw/counties_declarations_panel.rds")
+counties_panel <- readRDS("data_replicate/0_data_raw/counties_declarations_panel.rds")
 glimpse(counties_panel)
 
 us_counties <- readRDS("code_replicate/0_code_clean/0_clean_map_us_counties/us_acs5_sf.rds") %>%
@@ -112,7 +111,7 @@ counties_panel_pop_cleaned <- counties_panel %>%
   left_join(us_counties, by = "FIPS")#Removing this since they come from NACO and are incomplete ...
 
 ## Now merging with ALL cities declarations to create a variable that is the share of population under a policy
-cities_all <- readRDS("data_replicate/0_raw/all_cities_policy.rds")
+cities_all <- readRDS("data_replicate/0_data_raw/all_cities_policy.rds")
 
 panel_merged <- counties_panel_pop_cleaned %>%
   left_join(states_policies_both_sources, by = "State_name") %>%
