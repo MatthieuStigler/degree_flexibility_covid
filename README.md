@@ -29,7 +29,7 @@ The project also uses two non-CRAN packages:
 This contains the folders:
   
 - code replicate: 3 folders
-  - `auxiliary_scripts`: auxiliary scripts that will be called with `source()`
+  - `auxiliary_scripts`: auxiliary scripts that only contain raw functions that will be used within other scrips by using `source()`
   - `1_code_analysis`: code to produce the various DiD and event-study coefficients
   - `2_code_figures_tables`: code to produce the figures and tables in the paper. 
 - data_replicate: input data. In particular:
