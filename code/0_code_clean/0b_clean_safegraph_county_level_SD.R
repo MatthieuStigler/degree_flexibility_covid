@@ -64,7 +64,7 @@ min(df_final$Date)
 max(df_final$Date)
 
 
-saveRDS(df_final,"code_replicate/0_code_clean/0_clean_safegraph/safegraph_county_SD.rds")
+saveRDS(df_final,"data_replicate/1_data_intermediate/safegraph_county_SD.rds")
 
 
 

@@ -9,7 +9,7 @@ lapply(my_packages, library, character.only = TRUE)
 map<-purrr::map #For the nice iterations
 select<-dplyr::select
 
-source("code_replicate/auxiliary_scripts/general_options.R")
+source("code/auxiliary_scripts/general_options.R")
 
 #---------------------------------------------------------------------------------------------------------------
 
@@ -47,6 +47,6 @@ hist(df_cleaned$cq_Less_one_mile)
 hist(df_cleaned$cq_Less_ten_mile)  
 hist(df_cleaned$cq_More_ten_mile)  
 
-saveRDS(df_cleaned, "Code/clean_cuebiq/cuebiq_cleaned.rds")
+saveRDS(df_cleaned, "data_replicate/1_data_intermediate/cuebiq_cleaned.rds")
 
 

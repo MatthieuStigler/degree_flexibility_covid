@@ -21,7 +21,7 @@ safegraph_version <- "raw_SD_05mar21/2020"
 #### SET PATHS #### 
 
 datain = file.path(paste0("Code/clean_safegraph/",safegraph_version) ) # Not shared, proprietary data
-dataout = file.path(paste0("code_replicate/0_code_clean/0_clean_safegraph/") )
+dataout = file.path("data_replicate/1_data_intermediate")
 
 
 first_month <- 1 # which month start

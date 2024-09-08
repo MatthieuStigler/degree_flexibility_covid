@@ -16,8 +16,8 @@ if(!require(matPkg)) remotes::install_github("MatthieuStigler/matPkg", upgrade =
 map<-purrr::map 
 select<-dplyr::select
 
-source("code_replicate/auxiliary_scripts/888_event_code.R")
-source("code_replicate/auxiliary_scripts/general_options.R")
+source("code/auxiliary_scripts/888_event_code.R")
+source("code/auxiliary_scripts/general_options.R")
 
 
 ################################

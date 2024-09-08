@@ -12,7 +12,7 @@ map<-purrr::map #For the nice iterations
 select<-dplyr::select
 library(RColorBrewer)
 if(!require(matPkg)) remotes::install_github("MatthieuStigler/matPkg", upgrade = "never")
-source("code_replicate/auxiliary_scripts/general_options.R")
+source("code/auxiliary_scripts/general_options.R")
 gg_save_height = gg_save_height+2
 gg_save_width = gg_save_width+2
 #-------------------------------------------- ----------------------------------------------------------------

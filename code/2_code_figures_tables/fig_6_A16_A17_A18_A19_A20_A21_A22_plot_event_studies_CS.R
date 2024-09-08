@@ -13,8 +13,8 @@
 library(matPkg) # remotes::install_github("MatthieuStigler/matPkg", upgrade = "never")
 my_packages <- c("tidyverse","magrittr")
 lapply(my_packages, library, character.only = TRUE)
-source("code_replicate/auxiliary_scripts/888_event_code.R")
-source("code_replicate/auxiliary_scripts/general_options.R")
+source("code/auxiliary_scripts/888_event_code.R")
+source("code/auxiliary_scripts/general_options.R")
 
 #====================================================================================
 

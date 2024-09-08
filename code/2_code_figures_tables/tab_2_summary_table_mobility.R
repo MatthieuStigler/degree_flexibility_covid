@@ -13,7 +13,7 @@ map<-purrr::map #For the nice iterations
 select<-dplyr::select
 if(!require(matPkg)) remotes::install_github("MatthieuStigler/matPkg", upgrade = "never")
 
-source("code_replicate/auxiliary_scripts/888_table_to_pdf.R")
+source("code/auxiliary_scripts/888_table_to_pdf.R")
 
 options(scipen=999)
 

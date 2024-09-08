@@ -8,7 +8,7 @@
 my_packages <- c("tictoc","doParallel","tidyverse","magrittr","Formula","data.table")
 lapply(my_packages, library, character.only = TRUE)
 library("bacondecomp")
-source("code_replicate/auxiliary_scripts/lardon.R")
+source("code/auxiliary_scripts/lardon.R")
 
 #----------
 select<- dplyr::select

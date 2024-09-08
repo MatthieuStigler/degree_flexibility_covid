@@ -14,7 +14,7 @@ map<-purrr::map #To avoid conflicts
 select<-dplyr::select
 
 options(stringsAsFactors = FALSE) ## Do not load strings as factors
-source("code_replicate/auxiliary_scripts/general_options.R")
+source("code/auxiliary_scripts/general_options.R")
 
 
 #-----------------------------------------------------------------------------------------------------------------

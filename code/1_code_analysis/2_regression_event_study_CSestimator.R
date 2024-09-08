@@ -17,7 +17,7 @@ lapply(my_packages, library, character.only = TRUE)
 library("did")
 library("tictoc")
 library("doParallel")
-source("code_replicate/auxiliary_scripts/888_misc_functions.R")
+source("code/auxiliary_scripts/888_misc_functions.R")
 map<-purrr::map #To avoid conflicts
 select<-dplyr::select
 

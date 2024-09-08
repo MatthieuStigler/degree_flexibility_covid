@@ -69,7 +69,7 @@ nyt_cleaned %>% count(FIPS) %>% count(n)
 #-------- Create NYT panel
 
 #---- Get correct county name
-us_all <- readRDS("code_replicate/0_code_clean/0_clean_map_us_counties/us_acs5_sf.rds") %>%
+us_all <- readRDS("data_replicate/1_data_intermediate/us_acs5_sf.rds") %>%
   st_drop_geometry() %>%
   as_tibble() %>%
   select(FIPS,County_name,State_name)

@@ -13,13 +13,13 @@ map<-purrr::map #For the nice iterations
 select<-dplyr::select
 if(!require(matPkg)) remotes::install_github("MatthieuStigler/matPkg", upgrade = "never")
 
-source("code_replicate/auxiliary_scripts/general_options.R")
+source("code/auxiliary_scripts/general_options.R")
 
 
 #-----------------------------------------------------------------------------------------------------------
 
 ## read data
-df_declare <- readRDS("data_replicate/declarations_counties_states_cases_dates.rds") 
+df_declare <- readRDS("data_replicate/1_data_intermediate/declarations_counties_states_cases_dates.rds") 
 glimpse(df_declare)
 
   

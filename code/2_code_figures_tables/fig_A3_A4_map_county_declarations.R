@@ -9,7 +9,7 @@ library(ragg)
 map<-purrr::map 
 select<-dplyr::select
 
-source("code_replicate/auxiliary_scripts/general_options.R")
+source("code/auxiliary_scripts/general_options.R")
 #-------------------------------------------- ----------------------------------------------------------------
 
 declarations <- readRDS("data_replicate/counties_declarations_cleaned.rds")

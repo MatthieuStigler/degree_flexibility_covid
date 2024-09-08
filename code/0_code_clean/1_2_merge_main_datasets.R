@@ -33,7 +33,7 @@ sum(nyt_cases_mortality$Deaths)
 length(unique(nyt_cases_mortality$FIPS))
 
 #Safegraph data
-safegraph_SD <- readRDS("code_replicate/0_code_clean/0_clean_safegraph/safegraph_county_SD.rds") #not shared
+safegraph_SD <- readRDS("data_replicate/1_data_intermediate/safegraph_county_SD.rds") #not shared
 
 glimpse(safegraph_SD)
 min(safegraph_SD$Date)
@@ -66,7 +66,7 @@ weather <- readRDS("data_replicate/1_data_intermediate/weather_cleaned.rds")
 
 
 #Cuebiq
-cuebiq <- readRDS("code_replicate/0_code_clean/0_clean_cuebiq/cuebiq_cleaned.rds") %>% #not shared
+cuebiq <- readRDS("data_replicate/1_data_intermediate/cuebiq_cleaned.rds") %>% #not shared
   select(-County_name,-State_name)
 
 glimpse(cuebiq)

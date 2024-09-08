@@ -15,7 +15,7 @@ if(!require(matPkg)) remotes::install_github("MatthieuStigler/matPkg", upgrade =
 map<-purrr::map #For the nice iterations
 select<-dplyr::select
 
-source("code_replicate/auxiliary_scripts/general_options.R")
+source("code/auxiliary_scripts/general_options.R")
 extrafont::loadfonts()
 options(scipen=999)
 

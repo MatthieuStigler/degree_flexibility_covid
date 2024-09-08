@@ -11,14 +11,14 @@ lapply(my_packages, library, character.only = TRUE)
 map<-purrr::map 
 select<-dplyr::select
 if(!require(matPkg)) remotes::install_github("MatthieuStigler/matPkg", upgrade = "never")
-source("code_replicate/auxiliary_scripts/general_options.R")
+source("code/auxiliary_scripts/general_options.R")
 #-------------------------------------------- ----------------------------------------------------------------
 
 ################################
 #'## Read data
 ################################
 
-declar_stat_old <- readRDS("data_replicate/clean_states_declarations.rds")
+declar_stat_old <- readRDS("data_replicate/0_data_raw/clean_states_declarations.rds")
 declar_counties <- readRDS("data_replicate/declarations_counties_states_dates.rds")
 us_states_df <- read_csv("data_replicate/1_data_intermediate/US_states_dataOnly.csv")
 table_covars <- read_rds("data_replicate/table_covariates_reg.rds")

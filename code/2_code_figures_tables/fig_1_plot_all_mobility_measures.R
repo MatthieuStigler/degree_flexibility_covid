@@ -13,7 +13,7 @@ if(!require(matPkg)) remotes::install_github("MatthieuStigler/matPkg", upgrade =
 map<-purrr::map
 select<-dplyr::select
 
-source("code_replicate/auxiliary_scripts/general_options.R")
+source("code/auxiliary_scripts/general_options.R")
 
 col_day = "#33658a"
 col_weekend = "#f26419"  

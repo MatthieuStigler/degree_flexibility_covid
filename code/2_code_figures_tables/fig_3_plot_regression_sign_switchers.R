@@ -11,7 +11,7 @@ my_packages <- c("tidyverse","magrittr","lfe","stargazer", "broom", "future", "f
 sapply(my_packages, require, character.only = TRUE)
 sapply(my_packages, function(x) packageVersion(x) %>%  as.character)
 
-source("code_replicate/auxiliary_scripts/general_options.R")
+source("code/auxiliary_scripts/general_options.R")
 
 reg_2wayFE_Oct_coefs <- read_rds("data_replicate/3_data_analysis_output/2wayFE_coefs_all.rds")
 table_vars <- read_rds("data_replicate/table_responses_names.rds")

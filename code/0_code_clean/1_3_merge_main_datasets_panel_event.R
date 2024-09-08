@@ -20,7 +20,7 @@ did <- readRDS("data_replicate/2_data_final/merged_panel_did_long.rds")
 glimpse(did)
 table(did$Date)
 
-source("code_replicate/auxiliary_scripts/888_event_code.R")
+source("code/auxiliary_scripts/888_event_code.R")
 
 event_panel <- evt_data_build(did, vars_treatment =c("County_ED", #"County_SIP_BC", "State_ED", "State_SAH_BC",
                                                      "County_SIP",

@@ -14,9 +14,9 @@ if(!require(matPkg)) remotes::install_github("MatthieuStigler/matPkg", upgrade =
 map<-purrr::map #For the nice iterations
 select<-dplyr::select
 
-source("code_replicate/auxiliary_scripts/regression_function_stargaze.R")
-source("code_replicate/auxiliary_scripts/888_formula_functions_frm.R")
-source("code_replicate/auxiliary_scripts/general_options.R")
+source("code/auxiliary_scripts/regression_function_stargaze.R")
+source("code/auxiliary_scripts/888_formula_functions_frm.R")
+source("code/auxiliary_scripts/general_options.R")
 
 
 ################################

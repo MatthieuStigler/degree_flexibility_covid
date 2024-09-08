@@ -40,7 +40,7 @@ check <- cities %>%
 
 
 #-----------------------------------------------------------------------------
-saveRDS(merged_cleaned, "code_replicate/0_code_clean/0_merge_declarations/declarations_counties_states_dates.rds")  
+saveRDS(merged_cleaned, "data_replicate/1_data_intermediate/declarations_counties_states_dates.rds")  
 #-----------------------------------------------------------------------------
 
 message("Cross section of dates was cleaned and saved!!")
@@ -93,7 +93,7 @@ merged_cleaned_cases
 
 ## export
 write_rds(merged_cleaned_cases,
-          "code_replicate/0_code_clean/0_merge_declarations/declarations_counties_states_cases_dates.rds")  
+          "data_replicate/1_data_intermediate/declarations_counties_states_cases_dates.rds")  
 
 #----------------------------------------------------------------------------------------------
 #--------------------------- Now merging the panel version ------------------------------------
