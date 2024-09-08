@@ -121,4 +121,4 @@ coefs_out %>%
 #'## Export
 ################################
 
-write_rds(coefs_out, "data_replicate/coefs_all.rds")
+write_rds(coefs_out, "data_replicate/3_data_analysis_output/2wayFE_coefs_all.rds")

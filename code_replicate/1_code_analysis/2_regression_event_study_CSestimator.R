@@ -33,7 +33,7 @@ getDoParWorkers()
 options(stringsAsFactors = FALSE) ## Do not load strings as factors
 
 
-path_out = "data_replicate/regression_event_study_CS/saved_objects_cs/"
+path_out = "data_replicate/3_data_analysis_output/regression_event_study_CS/saved_objects_cs/"
 
 covariates = "_no_covariates" # rerun
 #covariates = "_covariates_covid"
@@ -290,8 +290,3 @@ foreach(outcome_var_index = 1:nrow(outcome_vars), .final = \(x) NULL) %dopar% { 
 message("smooth exit!")
 
 
-
-#did_cs_df <- tibble(Group = did_cs$group,Time = did_cs$t,ATT = did_cs$att,SE = did_cs$se) %>%
-#  mutate(rel_treatment = if_else(Time>=Group,"Post","Pre") ) %>%
-#  mutate(Group = as.character(Group))
-###### Add State_ED and State_ERC but removing last control group?

@@ -30,7 +30,8 @@ getDoParWorkers()
 
 run_evt_reg = T
 
-path_out = "data_replicate/regression_event_study_vanilla/all_outcomes_all_specs_with_Ftests/"
+# path_out = "data_replicate/regression_event_study_vanilla/all_outcomes_all_specs_with_Ftests/"
+path_out = "data_replicate/regression_event_study_vanilla/"
 
 df <- readRDS("data_replicate/2_data_final/merged_panel_event_dummies.rds") 
 
@@ -104,7 +105,7 @@ if(run_evt_reg) { #takes a while
     
   
   simultaneous_tidy <- bind_rows(Big_df$tidy_cleaned)
-  saveRDS(simultaneous_tidy,paste0(path_out,"saved_objects/tidy_simultaneous_",j,"_regressions_20_outcomes_4_transforms_weighted.rds") )
+  saveRDS(simultaneous_tidy,paste0(path_out,"tidy_simultaneous_",j,"_regressions_20_outcomes_4_transforms_weighted.rds") )
   
   }
   
@@ -152,14 +153,14 @@ if(run_evt_reg) { #takes a while
     
 
     unique_policies_tidy <- bind_rows(Big_df_uniques_slice$tidy_cleaned)
-    saveRDS(unique_policies_tidy,paste0(path_out,"saved_objects/tidy_unique_policies_slice_",i,"_regressions_14_outcomes_4_transforms_weighted.rds") )
+    saveRDS(unique_policies_tidy,paste0(path_out,"tidy_unique_policies_slice_",i,"_regressions_14_outcomes_4_transforms_weighted.rds") )
     
   }
   
   message("second foreach loop done")
 
   #---- Putting all the slices together    
-  all_objects <- list.files(paste0(path_out,"saved_objects/"), full.names = T)
+  all_objects <- list.files(path_out, full.names = TRUE)
   
   tidy_all <- readRDS(all_objects[[1]])
   tidy_all %>% count(Outcome_var) %>% count(n)
@@ -194,6 +195,6 @@ if(run_evt_reg) { #takes a while
   
   table(tidy_all_cleaned$Policies_in_regression_f)
   table(tidy_all_cleaned$Treatment_var)
-  saveRDS(tidy_all_cleaned,paste0(path_out,"all_regs_tidy_binded.rds"))
+  saveRDS(tidy_all_cleaned, "data_replicate/3_data_analysis_output/all_regs_tidy_binded.rds")
   
 }

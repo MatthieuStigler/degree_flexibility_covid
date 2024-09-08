@@ -20,7 +20,7 @@ source("code_replicate/auxiliary_scripts/general_options.R")
 #-----------------------------------------------------------------------------------------------------------------
 vars_in_long <- readRDS("data_replicate/table_responses_names_long.rds")
 
-all_decomps <- readRDS("data_replicate/all_decomps_individual_policies.rds")
+all_decomps <- readRDS("data_replicate/3_data_analysis_output/all_bacon_decomps_individual_policies.rds")
 
 
 test <- all_decomps[[1]]

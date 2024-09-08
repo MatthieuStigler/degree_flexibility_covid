@@ -21,7 +21,7 @@ gg_save_width = gg_save_width+2
 #'## Read data
 ################################
 
-reg_2wayFE_Oct_coefs <- read_rds("data_replicate/coefs_all.rds")
+reg_2wayFE_Oct_coefs <- read_rds("data_replicate/3_data_analysis_output/2wayFE_coefs_all.rds")
 glimpse(reg_2wayFE_Oct_coefs)
 table_vars <- read_rds("data_replicate/table_responses_names.rds")
 glimpse(table_vars)

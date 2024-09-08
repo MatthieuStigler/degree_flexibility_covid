@@ -25,7 +25,7 @@ source("code_replicate/auxiliary_scripts/general_options.R")
 ################################
 
 tidy_all_cleaned <- readRDS("data_replicate/all_regs_tidy_binded.rds")
-
+tidy_all_cleaned <- readRDS("data_replicate/3_data_analysis_output/all_regs_tidy_binded.rds")
 
 ################################
 #'## Prep data
