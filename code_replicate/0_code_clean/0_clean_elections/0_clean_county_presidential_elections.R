@@ -44,4 +44,4 @@ elections %<>%
 unique(elections$Candidate)
 table(nchar(elections$FIPS))
 
-saveRDS(elections, "code_replicate/0_code_clean/0_clean_elections/county_pres_elections_2016.rds")
+saveRDS(elections, "data_replicate/1_data_intermediate/county_pres_elections_2016.rds")

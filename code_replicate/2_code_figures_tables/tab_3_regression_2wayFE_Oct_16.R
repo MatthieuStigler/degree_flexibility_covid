@@ -23,7 +23,7 @@ source("code_replicate/auxiliary_scripts/general_options.R")
 #'## Read data
 ################################
 
-data_reg <- readRDS("data_replicate/merged_panel_did.rds")
+data_reg <- readRDS("data_replicate/2_data_final/merged_panel_did.rds")
 
 
 table_vars <- read_rds("data_replicate/table_responses_names.rds")

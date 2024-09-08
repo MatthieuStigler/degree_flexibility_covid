@@ -35,5 +35,5 @@ weather %>% filter(Date == as.Date("2020-02-01"))
 weather %<>%
   select(-fips,-Year,-Month,-Day)
 
-saveRDS(weather, "code_replicate/0_code_clean/0_clean_weather/weather_cleaned.rds")
+saveRDS(weather, "data_replicate/1_data_intermediate/weather_cleaned.rds")
 

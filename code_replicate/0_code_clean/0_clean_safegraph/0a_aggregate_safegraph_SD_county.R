@@ -13,7 +13,6 @@
 
 
 my_packages <- c("tidyverse","magrittr","lubridate","data.table","sf","bit64","tictoc")
-#install.packages(my_packages, repos = "http://cran.rstudio.com")
 sapply(my_packages, require, character.only = TRUE)
 library(jsonlite)
 

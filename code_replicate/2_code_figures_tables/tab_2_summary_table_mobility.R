@@ -22,7 +22,7 @@ options(scipen=999)
 ################################
 
 
-did <- readRDS("data_replicate/merged_panel_did.rds")
+did <- readRDS("data_replicate/2_data_final/merged_panel_did.rds")
 
 table_vars <- read_rds("data_replicate/table_responses_names.rds")
 table_covars <- read_rds("data_replicate/table_covariates_reg.rds")

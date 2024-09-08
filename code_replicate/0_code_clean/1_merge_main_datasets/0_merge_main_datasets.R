@@ -10,14 +10,14 @@ select<-dplyr::select
 #-------------------------------------------------------------------------------------
 
 #Map of the US counties
-us_census <- readRDS("code_replicate/0_code_clean/0_clean_map_us_counties/us_acs5_sf.rds") %>% 
+us_census <- readRDS("data_replicate/1_data_intermediate/us_acs5_sf.rds") %>% 
   st_drop_geometry() 
  
 table(us_census$Quantile_group)
 table(us_census$Medincome_decile)
 
 #County-level and state declarations 
-declarations_panel <- readRDS("code_replicate/0_code_clean/0_merge_declarations/declarations_counties_states_panel.rds")
+declarations_panel <- readRDS("data_replicate/1_data_intermediate/declarations_counties_states_panel.rds")
 
 glimpse(declarations_panel)
 min(declarations_panel$Date)
@@ -25,7 +25,7 @@ max(declarations_panel$Date)
 length(unique(declarations_panel$FIPS))
 
 #NYT mortality
-nyt_cases_mortality <- readRDS("code_replicate/0_code_clean/0_clean_cases_mortality_NYT/cases_mortality_nyt.rds")
+nyt_cases_mortality <- readRDS("data_replicate/1_data_intermediate/cases_mortality_nyt.rds")
 glimpse(nyt_cases_mortality)
 min(nyt_cases_mortality$Date)
 max(nyt_cases_mortality$Date)
@@ -42,17 +42,17 @@ max(safegraph_SD$Date)
 length(unique(safegraph_SD$FIPS))
 
 #PlaceIQ
-placeIQ_county <- readRDS("code_replicate/0_code_clean/0_clean_placeIQ/placeIQ_county_device_exposure.rds")
+placeIQ_county <- readRDS("data_replicate/1_data_intermediate/placeIQ_county_device_exposure.rds")
 glimpse(placeIQ_county)
 min(placeIQ_county$Date)
 max(placeIQ_county$Date)
 
 #County-level static elections data
-county_elections <- readRDS("code_replicate/0_code_clean/0_clean_elections/county_pres_elections_2016.rds")
+county_elections <- readRDS("data_replicate/1_data_intermediate/county_pres_elections_2016.rds")
 glimpse(county_elections)
 
 #Google mobility data
-gMobil <- read_rds("code_replicate/0_code_clean/0_clean_google_mobility/google_mobility_clean.csv")
+gMobil <- read_rds("data_replicate/1_data_intermediate/google_mobility_clean.csv")
 min(gMobil$Date)
 max(gMobil$Date)
 gMobil_w <- gMobil %>%
@@ -62,7 +62,7 @@ gMobil_w <- gMobil %>%
 gMobil_w
 
 #Weather data
-weather <- readRDS("code_replicate/0_code_clean/0_clean_weather/weather_cleaned.rds")
+weather <- readRDS("data_replicate/1_data_intermediate/weather_cleaned.rds")
 
 
 #Cuebiq
@@ -263,12 +263,12 @@ did %<>%
 names(did)
 
 #-----------------------------------------------------------------------------
-saveRDS(did, "code_replicate/0_code_clean/1_merge_main_datasets/merged_panel_did_long.rds")
+saveRDS(did, "data_replicate/2_data_final/merged_panel_did_long.rds")
 
 did_raboted <- did %>%
   filter(Date <= "2020-04-21") 
 
-saveRDS(did_raboted, "data_replicate/merged_panel_did.rds") 
+saveRDS(did_raboted, "data_replicate/2_data_final/merged_panel_did.rds") 
 
 #----------------------------------------------------------------------------
 message("smooth exit")

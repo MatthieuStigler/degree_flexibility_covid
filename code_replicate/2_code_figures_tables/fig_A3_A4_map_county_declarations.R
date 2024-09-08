@@ -28,7 +28,7 @@ check <- declarations %>%
   mutate(check = ifelse(County_SIP!=County_BC,1,0)) 
 
 
-us.sf <- readRDS("data_replicate/us_acs5_sf.rds")
+us.sf <- readRDS("data_replicate/1_data_intermediate/us_acs5_sf.rds")
 
 us.sf_all <- us.sf
 

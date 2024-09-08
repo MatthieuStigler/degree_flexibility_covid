@@ -20,7 +20,7 @@ col_weekend = "#f26419"
 
 #------------------------------------------------------------------------------------------------------------
 
-df <- readRDS("data_replicate/merged_panel_did.rds")
+df <- readRDS("data_replicate/2_data_final/merged_panel_did.rds")
 
 glimpse(df)
 

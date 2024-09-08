@@ -15,7 +15,7 @@ options(stringsAsFactors = FALSE) ## Do not load strings as factors
 
 #-----------------------------------------------------------------------------------------------------------------
 
-did <- readRDS("code_replicate/0_code_clean/1_merge_main_datasets/merged_panel_did_long.rds")
+did <- readRDS("data_replicate/2_data_final/merged_panel_did_long.rds")
 
 glimpse(did)
 table(did$Date)
@@ -45,7 +45,7 @@ df_final <- left_join(did_cleaned,event_panel_cleaned)
 summary(did_cleaned$StatePol_ED)
 
 
-saveRDS(df_final, "data_replicate/merged_panel_event_dummies.rds")
+saveRDS(df_final, "data_replicate/2_data_final/merged_panel_event_dummies.rds")
 
 glimpse(df_final)
 message("smooth exit")

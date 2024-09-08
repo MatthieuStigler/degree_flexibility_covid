@@ -98,6 +98,6 @@ completed_panel_2 <- completed_panel %>%
 
 summary(completed_panel_2)
 rm(completed_panel)
-saveRDS(completed_panel_2, "code_replicate/0_code_clean/0_clean_cases_mortality_NYT/cases_mortality_nyt.rds")
+saveRDS(completed_panel_2, "data_replicate/1_data_intermediate/cases_mortality_nyt.rds")
 
 

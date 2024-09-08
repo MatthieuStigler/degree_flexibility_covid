@@ -173,6 +173,6 @@ summary(us.sf)
 
 #------------- Save
 
-saveRDS(us.sf,"code_replicate/0_code_clean/0_clean_map_us_counties/us_acs5_sf.rds")
+saveRDS(us.sf,"data_replicate/1_data_intermediate/us_acs5_sf.rds")
 
 

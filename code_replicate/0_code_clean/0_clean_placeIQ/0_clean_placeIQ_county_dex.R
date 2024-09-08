@@ -36,4 +36,4 @@ table(dat$FIPS)
 table(dat$Date)
 summary(dat)
 
-saveRDS(dat, "code_replicate/0_code_clean/0_clean_placeIQ/placeIQ_county_device_exposure.rds")
+saveRDS(dat, "data_replicate/1_data_intermediate/placeIQ_county_device_exposure.rds")

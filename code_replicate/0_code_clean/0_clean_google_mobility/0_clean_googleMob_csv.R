@@ -23,8 +23,8 @@ gogMob_raw
 max(gogMob_raw$date)
 
 #
-us_counties_shp <- read_rds("code_replicate/0_code_clean/0_clean_map_us_counties/us_acs5_sf.rds")
-us_states_df <- read_csv("code_replicate/0_code_clean/0_clean_states/US_states_dataOnly.csv")
+us_counties_shp <- read_rds("data_replicate/1_data_intermediate/us_acs5_sf.rds")
+us_states_df <- read_csv("data_replicate/1_data_intermediate/US_states_dataOnly.csv")
 
 
 ################################
@@ -219,5 +219,4 @@ gogMob_cnt_clean %>%
 #'## Export
 ################################
 
-write_rds(gogMob_cnt_clean_l, "code_replicate/0_code_clean/0_clean_google_mobility/google_mobility_clean.csv")
-## READ AS: gMobil <- read_rds("Code/clean_google_mobility/google_mobility_clean.csv")
+write_rds(gogMob_cnt_clean_l, "data_replicate/1_data_intermediate/google_mobility_clean.csv")

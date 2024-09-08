@@ -73,7 +73,7 @@ us_states_df
 #'## Export
 ################################
 
-write_rds(us_states_sf_c, "code_replicate/0_code_clean/0_clean_states/US_states_map.rds")
+# write_rds(us_states_sf_c, "code_replicate/0_code_clean/0_clean_states/US_states_map.rds")
 ## READ AS: us_states_map <- read_rds("Data/US_maps/US_states_map.rds")
 
-write_csv(us_states_df, "code_replicate/0_code_clean/0_clean_states/US_states_dataOnly.csv")
+write_csv(us_states_df, "data_replicate/1_data_intermediate/US_states_dataOnly.csv")

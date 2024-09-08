@@ -32,7 +32,7 @@ run_evt_reg = T
 
 path_out = "data_replicate/regression_event_study_vanilla/all_outcomes_all_specs_with_Ftests/"
 
-df <- readRDS("data_replicate/merged_panel_event_dummies.rds") 
+df <- readRDS("data_replicate/2_data_final/merged_panel_event_dummies.rds") 
 
 glimpse(df)
 

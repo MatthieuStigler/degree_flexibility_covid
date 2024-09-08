@@ -59,7 +59,7 @@ if(control_group == "nevertreated") {
 outcome_vars <- readRDS("data_replicate/table_responses_names_long.rds") %>%
   filter(Source_short != "gm" | specification == "level")
 
-did.df <- readRDS("data_replicate/merged_panel_did.rds") #Version standard
+did.df <- readRDS("data_replicate/2_data_final/merged_panel_did.rds") #Version standard
 glimpse(did.df)
 
 missing_weather <- did.df %>% filter(is.na(tmean))

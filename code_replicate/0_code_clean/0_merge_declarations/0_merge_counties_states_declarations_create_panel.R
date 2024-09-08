@@ -51,7 +51,7 @@ message("Cross section of dates was cleaned and saved!!")
 #----------------------------------------------------------------------------------------------
 
 # read
-complete_panel <- readRDS("code_replicate/0_code_clean/0_clean_cases_mortality_NYT/cases_mortality_nyt.rds")
+complete_panel <- readRDS("data_replicate/1_data_intermediate/cases_mortality_nyt.rds")
 complete_panel
 
 ## get unique date per FIPS
@@ -103,7 +103,7 @@ write_rds(merged_cleaned_cases,
 counties_panel <- readRDS("data_replicate/0_data_raw/counties_declarations_panel.rds")
 glimpse(counties_panel)
 
-us_counties <- readRDS("code_replicate/0_code_clean/0_clean_map_us_counties/us_acs5_sf.rds") %>%
+us_counties <- readRDS("data_replicate/1_data_intermediate/us_acs5_sf.rds") %>%
   select(FIPS, Population_county) %>%
   st_drop_geometry()
 
@@ -238,6 +238,6 @@ panel_merged_final %>%
   count(n)
 max(panel_merged_final$Date)
 #-----------------------------------------------------------------------------
-saveRDS(panel_merged_final, "code_replicate/0_code_clean/0_merge_declarations/declarations_counties_states_panel.rds")
+saveRDS(panel_merged_final, "data_replicate/1_data_intermediate/declarations_counties_states_panel.rds")
 #-----------------------------------------------------------------------------
 
