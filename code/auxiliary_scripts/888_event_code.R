@@ -42,7 +42,7 @@ evt_data_build <- function(df, vars_treatment,
 evt_add_timing <- function(df, vars_treatment,
                            unit_var=FIPS, time_var=Date){
   df %>% 
-    select({{unit_var}}, {{time_var}}, one_of(vars_treatment)) %>% 
+    select({{unit_var}}, {{time_var}}, all_of(vars_treatment)) %>% 
     group_by({{unit_var}}) %>% 
     mutate(row_number = row_number()) %>% 
     mutate(across(vars_treatment, 

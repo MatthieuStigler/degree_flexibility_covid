@@ -2,7 +2,8 @@
 #---------- This code maps the declarations
 #---------------------------------------------------------------------------------------------------------------
 
-my_packages <- c("rgeos","raster","tidyverse","magrittr","haven","readxl","tools","usethis","RColorBrewer","sf","tidycensus","tigris","lubridate","scales")
+# my_packages <- c("rgeos","raster","tidyverse","magrittr","haven","readxl","tools","usethis","RColorBrewer","sf","tidycensus","tigris","lubridate","scales")
+my_packages <- c("rgeos","raster","tidyverse","magrittr", "tools","RColorBrewer","sf", "lubridate","scales")
 #install.packages(my_packages, repos = "http://cran.rstudio.com")
 lapply(my_packages, library, character.only = TRUE)
 library(ragg)

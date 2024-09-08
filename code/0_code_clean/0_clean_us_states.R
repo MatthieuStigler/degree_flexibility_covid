@@ -15,8 +15,8 @@ if(!require(matPkg)) remotes::install_github("MatthieuStigler/matPkg", upgrade =
 #'## Download
 ################################
 
-us_states_sf <- states(class="sf", cb=TRUE)
-us_counties_sf <- counties(class="sf", cb=TRUE)
+us_states_sf <- tigris::states(class="sf", cb=TRUE)
+us_counties_sf <- tigris::counties(class="sf", cb=TRUE)
 
 ################################
 #'## Clean

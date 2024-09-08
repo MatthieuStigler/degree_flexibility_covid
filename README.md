@@ -35,7 +35,13 @@ This contains the folders:
 - data_replicate: input data. In particular:
   - `merged_panel_did.rds` the main dataset, in R's `.rds` format.
   - `merged_panel_event_dummies.rds` the main dataset in event study format
-- output_replicate: output fugures/tables
+- output_replicate: output figures/tables
 
 
+## Specific files
 
+Some files need some specific action:
+
+- `0_clean_map_us_counties.R` (in `code/0_code_clean`): this downloads census data. You will need to request an API key at http://api.census.gov/data/key_signup.html and use it with `tidycensus::census_api_key()`
+- `0a_clean_safegraph_aggregate_SD_county.R` and `0b_clean_safegraph_county_level_SD.R` (in `code/0_code_clean`): JOJO
+- `0_clean_cuebiq.R` (in `code/0_code_clean`): JOJO

@@ -23,10 +23,10 @@ vars_to_get <- c("B01001_001","B01002_001","B01002_001",
                  "B19326_001","B19013_001") 
 
 # Download data
-us.df <- get_acs(geography = "county", 
-                 variables = vars_to_get,
-                 year = 2018,
-                 geometry = FALSE)
+us.df <- tidycensus::get_acs(geography = "county", 
+                             variables = vars_to_get,
+                             year = 2018,
+                             geometry = FALSE)
 
 
 us.df_cleaned <- us.df %>%
