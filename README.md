@@ -9,6 +9,21 @@ The code is also hosted on https://github.com/MatthieuStigler/degree_flexibility
 
 This dataset offers aggregated and transformed data derived from Google Mobility, Safegraph, Cuebiq, and PlaceIQ. To respect their data use agreements, we only provide anonymized county-level information.
 
+## How to run this in R: packages
+
+This project was configured with `renv`, although it is deactivated by default within this project. To activate it, and hence get the same package versions as used here, run: 
+
+```
+renv::activate()
+renv::restore()
+```
+For more information, see https://rstudio.github.io/renv/articles/renv.html
+
+The project also uses two non-CRAN packages:
+
+- library("matPkg") version 0.2.50, use: `remotes::install_github("MatthieuStigler/matPkg", upgrade = "never")`
+- library("multidiff") version 0.3.0, use: `remotes::install_github("MatthieuStigler/multiDiff", upgrade = "never")`
+
 ## Description
 
 This contains the folders:
@@ -23,16 +38,4 @@ This contains the folders:
 - output_replicate: output fugures/tables
 
 
-## R packages
 
-This project was configured with `renv`, although by fedault it is deactivated. To activate it, and hence get the same package versions as used here, run: 
-
-```
-renv::activate()
-renv::restore()
-```
-
-The project also uses two non-CRAN packages:
-
-- library("matPkg") version 0.2.50, use: `remotes::install_github("MatthieuStigler/matPkg", upgrade = "never")`
-- library("multidiff") version 0.3.0, use: `remotes::install_github("MatthieuStigler/multiDiff", upgrade = "never")`
