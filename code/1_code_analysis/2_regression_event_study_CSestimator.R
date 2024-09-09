@@ -60,7 +60,6 @@ outcome_vars <- readRDS("data_replicate/table_responses_names_long.rds") %>%
   filter(Source_short != "gm" | specification == "level")
 
 did.df <- readRDS("data_replicate/2_data_final/merged_panel_did.rds") #Version standard
-glimpse(did.df)
 
 missing_weather <- did.df %>% filter(is.na(tmean))
 unique(missing_weather$FIPS)
@@ -78,15 +77,7 @@ did.df_prepared <- did.df %>%
   mutate(StatePol_ED_dummy = if_else(StatePol_ED_date<=Date,1,0))
 
 check<- did.df_prepared %>% select(FIPS, Date,StatePol_ED_dummy)
-glimpse(did.df_prepared)  
-length(unique(did.df_prepared$ID))
-table(did.df_prepared$Date_numeric)
-table(did.df_prepared$StatePol_Resclo_date)
-table(did.df_prepared$StatePol_ED_date)
 
-table(did.df_prepared$County_SIP_numeric)
-table(did.df_prepared$County_ED_numeric)
-table(did.df_prepared$StatePol_SIP_numeric)
 
 
 if(covariates == "_no_covariates") {

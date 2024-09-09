@@ -31,7 +31,6 @@ merged_cleaned <- counties %>%
   left_join(states_revised, by = c("State_name" = "StateName") )%>%
   left_join(cities, by = c("FIPS")) 
 
-glimpse(merged_cleaned)
   
 check <- cities %>%
   anti_join(counties) %>%
@@ -101,7 +100,6 @@ write_rds(merged_cleaned_cases,
 
 # From MTurk and manually checked, put into panel
 counties_panel <- readRDS("data_replicate/0_data_raw/counties_declarations_panel.rds")
-glimpse(counties_panel)
 
 us_counties <- readRDS("data_replicate/1_data_intermediate/us_acs5_sf.rds") %>%
   select(FIPS, Population_county) %>%
@@ -117,8 +115,6 @@ panel_merged <- counties_panel_pop_cleaned %>%
   left_join(states_policies_both_sources, by = "State_name") %>%
   left_join(cities_all, by = c("FIPS")) #Add cities
 
-glimpse(panel_merged)
-table(panel_merged$City_ED)
 
 # Create City dummies
 panel_merged_city_share_computed <- panel_merged %>%
@@ -192,14 +188,10 @@ panel_merged_city_share_computed_distinct <- panel_merged_city_share_computed %>
   distinct(.keep_all = T)
 
 summary(panel_merged_city_share_computed_distinct)
-glimpse(panel_merged_city_share_computed_distinct)
 
 #-------- Now putting the panel in DiD format (not event study yet)
 
 if(nrow(counties_panel_pop_cleaned) == nrow(panel_merged_city_share_computed_distinct)) message("all good!") else stop("WTF")
-
-glimpse(panel_merged_city_share_computed_distinct)
-
 
 
 #---- Put in relative time
@@ -221,7 +213,6 @@ panel_merged_final <- panel_merged_city_share_computed_distinct %>%
   ~ ifelse(!is.na(.), Date - . , .)
   )
 
-message("need to double check")
 
 panel_merged_final %<>%
   mutate_at(vars(County_ED,County_SIP,County_BC,County_SIP_BC,County_ED_SIP_BC, #County
@@ -230,7 +221,6 @@ panel_merged_final %<>%
             ~ ifelse(is.infinite(.),NA , .)
   )
 
-glimpse(panel_merged_final)
 summary(panel_merged_final)
 
 panel_merged_final %>% 

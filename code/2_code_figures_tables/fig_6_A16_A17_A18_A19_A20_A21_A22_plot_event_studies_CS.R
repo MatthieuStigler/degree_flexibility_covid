@@ -38,12 +38,6 @@ binded_tidy <- bind_rows(all_event_studies_aggregated$df) %>%
   mutate(estimate_signif = if_else(abs(t.stat)>=1.96, ATT, as.numeric(NA))) %>%
   mutate(estimate_not_signif = if_else(abs(t.stat)<1.96, ATT, as.numeric(NA))) 
 
-glimpse(binded_tidy)
-table(binded_tidy$specification)
-table(binded_tidy$Control_group_CS, useNA="ifany")
-table(binded_tidy$Included_covariates, useNA="ifany")
-table(binded_tidy$Treatment_var)
-table(binded_tidy$Outcome_var)
 n_out_vars <- n_distinct(str_remove_all(binded_tidy$Outcome_var, "_pct|_rolling|_diff|_log"))
 n_out_vars_transo <- n_distinct(binded_tidy$Outcome_var)
 
@@ -83,8 +77,6 @@ all_coefs <- binded_tidy %>%
   filter(Control_group_CS == "Not yet treated") %>%
   mutate(Outcome_var_c = str_replace_all(Outcome_var,"_"," "))
   
-glimpse(all_coefs)
-table(all_coefs$Outcome_var)
 
 all_coefs
 
@@ -168,14 +160,6 @@ binded_tidy_by_groups <- rbindlist(all_event_studies_by_group$df, fill = TRUE) %
   mutate(estimate_not_signif = if_else(abs(t.stat)<1.96, ATT, as.numeric(NA))) 
 
 binded_tidy_by_groups
-
-table(binded_tidy_by_groups$specification)
-table(binded_tidy_by_groups$Included_covariates)
-
-glimpse(binded_tidy_by_groups)
-summary(binded_tidy_by_groups$P_val_pre_test_parallel_trends)
-table(binded_tidy$Included_covariates)
-
 
 all_coefs_all_groups <- binded_tidy_by_groups %>%
   as_tibble() %>%

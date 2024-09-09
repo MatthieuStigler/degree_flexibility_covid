@@ -62,8 +62,6 @@ for (i in 1:length(all_decomps)) {
                      
 }
 
-glimpse(all_diff)
-table(all_diff$Outcome)
 
 library(rcartocolor)
 
@@ -80,7 +78,6 @@ all_diff_subset <- all_diff %>%
   mutate(Ratio_FE_cleaned = FE_cleaned/FE) 
 
 
-glimpse(all_diff_subset)
 
 plot_individual_pol <- ggplot(all_diff_subset, aes(x = Indep_var, y = Ratio_FE_cleaned) )+
     geom_col(aes(color = Source_name_signed, fill = Source_name_signed),width=0.5,    

@@ -22,9 +22,7 @@ gg_save_width = gg_save_width+2
 ################################
 
 reg_2wayFE_Oct_coefs <- read_rds("data_replicate/3_data_analysis_output/2wayFE_coefs_all.rds")
-glimpse(reg_2wayFE_Oct_coefs)
 table_vars <- read_rds("data_replicate/table_responses_names.rds")
-glimpse(table_vars)
 
 formus_df <- readRDS("data_replicate/table_formulas_reg.rds") %>%
   select(formu_num,formu_legend)
@@ -58,14 +56,6 @@ reg_2wayFE_Oct_coefs_c <- reg_2wayFE_Oct_coefs %>%
   mutate(term_cleaned = str_replace(term_cleaned,"Resclo","ERC")) %>% 
   mutate(term_cleaned = str_replace(term_cleaned,"SIP","SIPO")) %>% 
   mutate(term_cleaned = str_remove(term_cleaned,"Pol")) 
-  
-
-reg_2wayFE_Oct_coefs %>% count(list_var)
-
-glimpse(reg_2wayFE_Oct_coefs_c)
-table(reg_2wayFE_Oct_coefs_c$formu_legend )
-table(reg_2wayFE_Oct_coefs_c$term)
-
   
 
 ################################

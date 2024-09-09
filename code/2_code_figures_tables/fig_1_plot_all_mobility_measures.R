@@ -22,7 +22,6 @@ col_weekend = "#f26419"
 
 df <- readRDS("data_replicate/2_data_final/merged_panel_did.rds")
 
-glimpse(df)
 
 #-----  Put outcome in long
 outcome_vars <- readRDS("data_replicate/table_responses_names.rds") 

@@ -16,12 +16,6 @@ source("code/auxiliary_scripts/general_options.R")
 
 df <- read_csv("Data/Cuebiq/UC_Davis_cmi-20200526.csv") #Confidential dataset, not shared
 
-glimpse(df)
-min(df$ref_dt)
-max(df$ref_dt)
-
-length(unique(df$county_fips_code))
-length(unique(df$ref_dt))
 
 check <- df %>%
   group_by(county_fips_code) %>%

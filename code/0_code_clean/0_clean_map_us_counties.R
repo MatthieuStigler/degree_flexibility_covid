@@ -157,7 +157,6 @@ us.sf %<>%
   mutate(State = str_to_title(State)) %>%
   select(-NAME)
 
-glimpse(us.sf)
 
 us.sf %<>%
   mutate(FIPS = GEOID,

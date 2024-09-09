@@ -36,7 +36,6 @@ other_vars <- table_covars %>%
 
 mobil_vars <- table_vars$list_var
 all_vars <- c(mobil_vars, as.character(other_vars$covariate_name))
-glimpse(did)
 
 did_mobil <- did %>%
   select(FIPS, Date,

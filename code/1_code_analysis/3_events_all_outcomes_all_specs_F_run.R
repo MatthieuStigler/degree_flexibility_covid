@@ -35,7 +35,6 @@ path_out = "data_replicate/regression_event_study_vanilla/"
 
 df <- readRDS("data_replicate/2_data_final/merged_panel_event_dummies.rds") 
 
-glimpse(df)
 
 #------------------------------------------------------------------------------------------------------------
 
@@ -50,7 +49,6 @@ vars_transforms = bind_rows(outcome_long %>% mutate(Weights = F),
                               mutate(list_names = paste0(list_names, ", weighted"))
 )
 
-glimpse(vars_transforms)
 
 
 #---------- All simultaneous policies
@@ -176,7 +174,6 @@ if(run_evt_reg) { #takes a while
   table(tidy_all$Treatment_var)
   table(tidy_all$Policies_in_regression)
   
-  glimpse(tidy_all)
   
   tidy_all_cleaned <- tidy_all %>%
     mutate(Treatment_var = str_replace(Treatment_var,"_"," ")) %>% #move elsewhere?

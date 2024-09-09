@@ -14,8 +14,6 @@ select<-dplyr::select
  
 dat <- fread("data_replicate/0_data_raw/county_dex.csv")
 
-glimpse(dat)
-
 dat %<>%
   as_tibble %>%
   rename(FIPS = county,
@@ -29,7 +27,6 @@ dat %<>%
   mutate(County_FIPS = FIPS, 
          Date = as.Date(Date))
 
-glimpse(dat)
 #all_states <- tibble(State_abb = c(state.abb,"DC","PR"), State_name = c(state.name,"District Of Columbia","Puerto Rico"))
 
 table(dat$FIPS)

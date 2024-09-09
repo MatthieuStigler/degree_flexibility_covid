@@ -19,42 +19,23 @@ table(us_census$Medincome_decile)
 #County-level and state declarations 
 declarations_panel <- readRDS("data_replicate/1_data_intermediate/declarations_counties_states_panel.rds")
 
-glimpse(declarations_panel)
-min(declarations_panel$Date)
-max(declarations_panel$Date)
 length(unique(declarations_panel$FIPS))
 
 #NYT mortality
 nyt_cases_mortality <- readRDS("data_replicate/1_data_intermediate/cases_mortality_nyt.rds")
-glimpse(nyt_cases_mortality)
-min(nyt_cases_mortality$Date)
-max(nyt_cases_mortality$Date)
-sum(nyt_cases_mortality$Deaths)
-length(unique(nyt_cases_mortality$FIPS))
 
 #Safegraph data
 safegraph_SD <- readRDS("data_replicate/1_data_intermediate/safegraph_county_SD.rds") #not shared
 
-glimpse(safegraph_SD)
-min(safegraph_SD$Date)
-max(safegraph_SD$Date)
-#nrow(safegraph_SD %>% filter(is.na(State_abb)))
-length(unique(safegraph_SD$FIPS))
 
 #PlaceIQ
 placeIQ_county <- readRDS("data_replicate/1_data_intermediate/placeIQ_county_device_exposure.rds")
-glimpse(placeIQ_county)
-min(placeIQ_county$Date)
-max(placeIQ_county$Date)
 
 #County-level static elections data
 county_elections <- readRDS("data_replicate/1_data_intermediate/county_pres_elections_2016.rds")
-glimpse(county_elections)
 
 #Google mobility data
 gMobil <- read_rds("data_replicate/1_data_intermediate/google_mobility_clean.csv")
-min(gMobil$Date)
-max(gMobil$Date)
 gMobil_w <- gMobil %>%
   select(-Category) %>%
   pivot_wider(names_from = Category_raw,
@@ -69,7 +50,6 @@ weather <- readRDS("data_replicate/1_data_intermediate/weather_cleaned.rds")
 cuebiq <- readRDS("data_replicate/1_data_intermediate/cuebiq_cleaned.rds") %>% #not shared
   select(-County_name,-State_name)
 
-glimpse(cuebiq)
 
 
 #-------------------------------------------- Merging -------------------------------------
@@ -88,16 +68,11 @@ merged_2 <- merged %>%
   left_join(weather, by = c("Date", "FIPS")) %>%
   left_join(cuebiq, by = c("Date", "FIPS"))
 
-glimpse(merged_2)
 rm(merged)
 
 #================# Generate log first (sign afterwards)
 
 outcomes_names <- readRDS("data_replicate/table_responses_names.rds")
-glimpse(outcomes_names)
-table(outcomes_names$list_var)
-table(outcomes_names$list_names)
-table(outcomes_names$Source_name_signed)
 
 unique_outcome_names_non_gm <- unique(outcomes_names$list_var) #%>%
   #str_remove(.,"_pct")  # need to deal with Median_home_perc afterwards
@@ -145,10 +120,6 @@ merged_4 %<>%
 
 detach("package:data.table", unload=TRUE) #Just needed frollmean
 
-glimpse(merged_4)
-summary(merged_4$Completely_home_pct_rolling)
-summary(merged_4)
-table(merged_4$Date) #3069
 
 #=============================================================== 
 
@@ -179,7 +150,6 @@ merged_5 <- merged_4 %>%
 
 test <- merged_5 %>% select(Date,State_name,FIPS,Date_state_FE)
 
-glimpse(merged_5)
 
 rm(merged_4)
 
@@ -206,8 +176,6 @@ did %<>%
            ~ ifelse(.>=0,1,0)
  )
 
-glimpse(did)
-summary(did)
 
 message("imputing 0 if treatment is missing")
 
@@ -219,7 +187,6 @@ did %<>%
             ~ ifelse(is.na(.),0 , .)
   )
 
-glimpse(did)
 
 #------ Create interaction terms manually
 
@@ -229,8 +196,6 @@ did %<>%
          County_ED_T3 = if_else(Medincome_tercile=="66%_99%" & County_ED==1,1,0 )) %>%
   mutate_at(vars(County_ED_T1,County_ED_T2,County_ED_T3), ~ifelse(is.na(Medincome_tercile),NA,.)) #lines above wrongly imputed 0s... 
 
-summary(did$County_ED_T3)
-summary(did$Medincome_tercile)
 
 
 #did %<>% mutate(Any_policy_in_force = pmax(County_ED_SIP_BC,State_ED_SAH_BC)) #too few cases

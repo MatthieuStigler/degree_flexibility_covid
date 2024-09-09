@@ -67,11 +67,6 @@ merged <- us.sf %>%
                                                                "March 16 - 20","March 21 - 31","April - June 11",
                                                             "No county government")))
 
-glimpse(merged)
-table(merged$County_ED)
-table(merged$County_ED_week)
-
-table(merged$County_SIP)
 
 #---- Counts for paper
 

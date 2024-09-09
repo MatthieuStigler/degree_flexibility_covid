@@ -12,9 +12,6 @@ select<-dplyr::select
 #-----------------------------------------------------------------------------------------------------------
 
 weather <- read_dta("data_replicate/0_data_raw/DAILY_WEATHER_IDW200_2020_v2.dta") 
-glimpse(weather)
-summary(weather)
-length(unique(weather$fips))
 
 check <- weather %>% filter(is.na(Tmean))
 unique(check$fips) #22055 28127 22113

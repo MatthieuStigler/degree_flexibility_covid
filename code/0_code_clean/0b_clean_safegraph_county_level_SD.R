@@ -20,9 +20,6 @@ select<-dplyr::select
 df <- readRDS("Code/clean_safegraph/clean_safegraph_county_level/aggregate_SD_county/safeGraph_SD_county.rds") #Starting Mar 21
 
 
-glimpse(df)
-min(df$date)
-max(df$date)
 summary(df$SDnew_medianPercHome)
 summary(df$SD_average_bucketed_time_away_from_home)
 quantile(df$device_count, seq(0,1,.1),na.rm = T)
@@ -48,9 +45,6 @@ df_final <- df %>%
   select(FIPS,Date,Device_count,Median_distance_traveled, Median_home_dwell_time, 
          Completely_home_pct, Part_time_work_pct, Full_time_work_pct,Away_min_three_hours_pct,
          Median_not_home_dwell_time,Median_home_perc,Average_time_away) 
-
-glimpse(df_final)
-
 
 
 

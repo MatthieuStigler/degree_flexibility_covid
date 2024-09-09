@@ -44,7 +44,6 @@ table(all_controls$term)
 table(all_controls$term_cleaned)
 table(all_controls$Policy_and_log)
 
-glimpse(all_controls)
 
 
 

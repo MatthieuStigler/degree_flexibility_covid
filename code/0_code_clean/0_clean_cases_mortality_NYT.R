@@ -15,13 +15,6 @@ last_day <- "2021/03/21"
 #downloaded March 2022, 2021 from https://github.com/nytimes/covid-19-data/archive/master.zip
 nyt <- read_csv("data_replicate/0_data_raw/NYT_us-counties.csv") 
 
-glimpse(nyt)
-
-sum(nyt$deaths)
-sum(nyt$cases)
-
-message("values are in cumulative format")
-
 nyt %<>%
   rename(Date = date, FIPS = fips, Cum_cases = cases, Cum_deaths = deaths) %>%
   select(-county) %>%
@@ -83,7 +76,6 @@ completed_panel <- expand.grid(unique(us_all$FIPS),
   left_join(nyt_cleaned,by = c("FIPS","Date"))
 
 
-glimpse(completed_panel)
 completed_panel %>% count(FIPS) %>% count(n)
 as.numeric(as.Date(last_day)-as.Date(first_day))+1
 

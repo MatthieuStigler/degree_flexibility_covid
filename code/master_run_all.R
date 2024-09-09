@@ -65,7 +65,7 @@ source_throw <- function (path, echo = TRUE, all.names = TRUE) {
 out <- files_keep_order %>% 
   ## don't download every time
   filter(file!="0_clean_us_states.R") %>% 
-  head(2) %>%
+  head(10) %>%
   mutate(run_result = map_safely(full_path, ~source_throw(.)))
 out
 

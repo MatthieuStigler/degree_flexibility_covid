@@ -14,8 +14,6 @@ select<-dplyr::select
 #from MIT elecions lab, https://electionlab.mit.edu/data
 elections <- read_csv("data_replicate/0_data_raw/countypres_2000-2016.csv")
 
-glimpse(elections)
-
 elections %<>%
   rename(Year = year, Office = office, Candidate = candidate, Party = party,
          Candidate_votes = candidatevotes, Total_votes = totalvotes,

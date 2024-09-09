@@ -40,7 +40,6 @@ for (m in first_month:last_month) {
     
     dat <- fread(file.path(datain, paste("0", m, "/", d, "/2020-0",m,"-",d,"-social-distancing.csv.gz",sep="")))
     
-    #glimpse(dat)
     
     dat[, median_dwell_at_bucketed_distance_traveled := NULL]
     dat[, bucketed_distance_traveled := NULL]
@@ -90,8 +89,7 @@ for (m in first_month:last_month) {
         gen_var(dat,v)  
     }
     
-    #glimpse(dat)
-    
+  
     paste(names(dat), collapse = "+")
     
     dat[ , sum_devices_away_home := `v<20`+v21_45+v46_60+v61_120+v121_180+v181_240+v241_300+v301_360+
