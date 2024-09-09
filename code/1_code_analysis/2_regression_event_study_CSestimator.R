@@ -33,7 +33,7 @@ getDoParWorkers()
 options(stringsAsFactors = FALSE) ## Do not load strings as factors
 
 
-path_out = "data_replicate/3_data_analysis_output/regression_event_study_CS/saved_objects_cs/"
+path_out = "data_replicate/3_data_analysis_output/regression_event_study_CS/"
 
 covariates = "_no_covariates" # rerun
 #covariates = "_covariates_covid"

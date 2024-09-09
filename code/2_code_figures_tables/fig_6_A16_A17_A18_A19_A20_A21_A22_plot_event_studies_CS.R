@@ -18,7 +18,7 @@ source("code/auxiliary_scripts/general_options.R")
 
 #====================================================================================
 
-pathin = "data_replicate/3_data_analysis_output/regression_event_study_CS/saved_objects_cs/"
+pathin = "data_replicate/3_data_analysis_output/regression_event_study_CS/"
 
 
 

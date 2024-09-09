@@ -24,8 +24,8 @@ source("code/auxiliary_scripts/general_options.R")
 #'## Read data
 ################################
 
-tidy_all_cleaned <- readRDS("data_replicate/all_regs_tidy_binded.rds")
-tidy_all_cleaned <- readRDS("data_replicate/3_data_analysis_output/all_regs_tidy_binded.rds")
+# tidy_all_cleaned <- readRDS("data_replicate/all_regs_tidy_binded.rds")
+tidy_all_cleaned <- readRDS("data_replicate/3_data_analysis_output/all_regs_tidy_binded.rds") ## from 1_code_analysis/3_events
 
 ################################
 #'## Prep data

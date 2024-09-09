@@ -21,7 +21,7 @@ source("code/auxiliary_scripts/general_options.R")
 declar_stat_old <- readRDS("data_replicate/0_data_raw/clean_states_declarations.rds")
 declar_counties <- readRDS("data_replicate/declarations_counties_states_dates.rds")
 us_states_df <- read_csv("data_replicate/1_data_intermediate/US_states_dataOnly.csv")
-table_covars <- read_rds("data_replicate/table_covariates_reg.rds")
+table_covars <- read_rds("data_replicate/1_data_intermediate/vars_names_and_formulas/table_covariates_reg.rds")
 
 ## county dat for state pop
 cnt_dat <- read_rds("data_replicate/1_data_intermediate/us_acs5_sf.rds") %>% 

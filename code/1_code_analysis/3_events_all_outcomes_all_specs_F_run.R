@@ -28,10 +28,9 @@ getDoParWorkers() #check
 registerDoParallel(cores=cores_number)
 getDoParWorkers()
 
-run_evt_reg = T
+run_evt_reg = TRUE
 
-# path_out = "data_replicate/regression_event_study_vanilla/all_outcomes_all_specs_with_Ftests/"
-path_out = "data_replicate/regression_event_study_vanilla/"
+path_out = "data_replicate/3_data_analysis_output/regression_event_study_vanilla/"
 
 df <- readRDS("data_replicate/2_data_final/merged_panel_event_dummies.rds") 
 
@@ -68,7 +67,6 @@ if(run_evt_reg) { #takes a while
   vars_transforms %<>%
     mutate(Sample_loop = sample(seq(1:10), n(), replace = T))
   
-  table(vars_transforms$Sample_loop)
   
   
   foreach(j=1:looping) %dopar% {
@@ -117,7 +115,6 @@ if(run_evt_reg) { #takes a while
     expand_grid(tibble(unique_var = c("County_ED", "County_SIP", "StatePol_ED", "StatePol_SIP","StatePol_Resclo")) ) %>%
     mutate(Sample_loop = sample(seq(1:10), n(), replace = T))
   
-  table(Big_df_uniques$Sample_loop)
 
   foreach(i=1:looping) %dopar% {
     
@@ -169,10 +166,6 @@ if(run_evt_reg) { #takes a while
     tidy_all <- bind_rows(tidy_all,tidy_i)
   }
   
-  tidy_all %>% count(Policies_in_regression) 
-  table(tidy_all$Number_obs)
-  table(tidy_all$Treatment_var)
-  table(tidy_all$Policies_in_regression)
   
   
   tidy_all_cleaned <- tidy_all %>%
@@ -190,8 +183,6 @@ if(run_evt_reg) { #takes a while
                                              levels = c("County ED", "County SIPO", "State ED", 
                                                         "State SIPO","State ERC", "Simultaneous policies")))
   
-  table(tidy_all_cleaned$Policies_in_regression_f)
-  table(tidy_all_cleaned$Treatment_var)
   saveRDS(tidy_all_cleaned, "data_replicate/3_data_analysis_output/all_regs_tidy_binded.rds")
   
 }
