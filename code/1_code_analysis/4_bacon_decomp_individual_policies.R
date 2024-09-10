@@ -1,5 +1,5 @@
 #' ---
-#' description: "Run Goodman-Bacon estimator using lardon.R for speed"
+#' description: "Run Goodman-Bacon estimator using bacon_decomp_scripts.R for speed"
 #' date: 2021-04-22
 #' author: Jo
 #' run_final: TRUE
@@ -8,7 +8,7 @@
 my_packages <- c("tictoc","doParallel","tidyverse","magrittr","Formula","data.table")
 lapply(my_packages, library, character.only = TRUE)
 library("bacondecomp")
-source("code/auxiliary_scripts/lardon.R")
+source("code/auxiliary_scripts/bacon_decomp_scripts.R")
 
 #----------
 select<- dplyr::select

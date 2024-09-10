@@ -17,7 +17,7 @@ select<-dplyr::select
 source("code/auxiliary_scripts/regression_function_stargaze.R")
 source("code/auxiliary_scripts/888_formula_functions_frm.R")
 source("code/auxiliary_scripts/general_options.R")
-
+source("code/auxiliary_scripts/888_misc_functions.R")
 
 ################################
 #'## Read data
@@ -54,7 +54,7 @@ all_covars_keep <- formus %>%
 ## all there?
 all_covars_keep %>% 
   anti_join(table_covars, by = "covariate_name") %>% 
-  mat_check_0row()
+  prj_check_0row()
 
 ## Select covariates for stargazing
 table_covars_subset <- table_covars %>% 

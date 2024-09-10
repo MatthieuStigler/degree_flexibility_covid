@@ -12,7 +12,7 @@ select<-dplyr::select
 if(!require(matPkg)) remotes::install_github("MatthieuStigler/matPkg", upgrade = "never")
 #-------------------------------------------- ----------------------------------------------------------------
 
-
+source("code/auxiliary_scripts/888_misc_functions.R")
 
 ################################
 #'## Read
@@ -61,7 +61,7 @@ gogMob_raw %>%
   filter(country_region=="United States") %>% 
   add_count(sub_region_1, sub_region_2, date) %>% 
   filter(n>1) %>% 
-  mat_check_0row()
+  prj_check_0row()
 
 
 ################################
@@ -90,7 +90,7 @@ merge_try <- states_list %>%
 ## CHECK: any unmatched? OK!
 merge_try %>% 
   filter_all(any_vars(is.na(.))) %>% 
-  mat_check_0row()
+  prj_check_0row()
 
 ## washington DC?
 merge_try %>% 

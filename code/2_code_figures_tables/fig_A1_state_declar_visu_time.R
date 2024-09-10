@@ -12,6 +12,7 @@ map<-purrr::map
 select<-dplyr::select
 if(!require(matPkg)) remotes::install_github("MatthieuStigler/matPkg", upgrade = "never")
 source("code/auxiliary_scripts/general_options.R")
+source("code/auxiliary_scripts/888_misc_functions.R")
 #-------------------------------------------- ----------------------------------------------------------------
 
 ################################
@@ -40,7 +41,7 @@ declar_counties_pop <- declar_counties %>%
 # CHECK: unmatched? Ok!
 declar_counties_pop %>% 
   filter(is.na(Population_county)) %>% 
-  mat_check_0row()
+  prj_check_0row()
 
 ################################
 #'## County to state
@@ -54,7 +55,7 @@ declar_stat <- declar_counties %>%
 declar_stat %>% 
   add_count(State_name,State_abb) %>% 
   filter(n>1) %>% 
-  mat_check_0row()
+  prj_check_0row()
 
 
 
@@ -79,7 +80,7 @@ dat_pop
 ## CHECK: all there? OK (after correcting DC)
 dat_pop %>% 
   filter(is.na(State_abb)) %>% 
-  mat_check_0row()
+  prj_check_0row()
 
 
 ## add to declar state
@@ -90,7 +91,7 @@ declar_stat_pop <- declar_stat %>%
 ## CHECK: all merged? OK
 declar_stat_pop %>% 
   filter(is.na(population)) %>% 
-  mat_check_0row()
+  prj_check_0row()
 
 
 

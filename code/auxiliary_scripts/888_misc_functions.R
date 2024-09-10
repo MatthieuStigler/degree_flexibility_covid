@@ -48,3 +48,21 @@ if(FALSE){
   Sys.sleep(1)
   prj_toc("Horrah!")
 }
+
+#' check if 0 rows
+prj_check_0row <- function (df, message_ok = "OK", warn_message = NULL, stop_message = NULL, 
+                            print_df = TRUE, n_row = 0) {
+  if (nrow(df) == n_row) {
+    return(message_ok)
+  }
+  else if (!is.null(warn_message)) {
+    warning(warn_message)
+  }
+  else {
+    if (is.null(stop_message)) 
+      stop_message <- paste("Does not have", n_row, "rows!")
+    if (print_df) 
+      print(df)
+    stop(stop_message)
+  }
+}

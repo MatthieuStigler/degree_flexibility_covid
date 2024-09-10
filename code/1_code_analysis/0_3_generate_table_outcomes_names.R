@@ -12,6 +12,7 @@ map<-purrr::map #For the nice iterations
 select<-dplyr::select
 
 source("code/auxiliary_scripts/general_options.R")
+source("code/auxiliary_scripts/888_misc_functions.R")
 #-------------------------------------------- ----------------------------------------------------------------
 
 ################################
@@ -85,7 +86,7 @@ table_vars
 ## checvk all info there
 table_vars %>% 
   filter_all(any_vars(is.na(.))) %>% 
-  mat_check_0row()
+  prj_check_0row()
 
 
 ################################
