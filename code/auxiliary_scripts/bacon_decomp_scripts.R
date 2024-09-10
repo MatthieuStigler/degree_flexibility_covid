@@ -132,11 +132,11 @@ unpack_variable_names <- function(formula) {
   return(r_list)
 }
 
-lardon <- function(formula,
-                   data,
-                   id_var,
-                   time_var, 
-                   quietly = FALSE) {
+bacon_decomp_custom <- function(formula,
+                                data,
+                                id_var,
+                                time_var, 
+                                quietly = FALSE) {
   # Evaluate formula in data environment
   formula <- formula(terms(formula, data = data))
   

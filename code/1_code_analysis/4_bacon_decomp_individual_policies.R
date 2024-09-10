@@ -84,9 +84,9 @@ all_decomps <- foreach(reg=1:nrow(all_reg)) %dopar% {
   
   message("parallelizing regression ",reg)
   
-  out <- lardon(formula = all_reg_i[[1,3]][[1]] , 
-                data = all_reg_i[[1,4]][[1]], 
-                id_var = "FIPS", time_var = "Date_num") 
+  out <- bacon_decomp_custom(formula = all_reg_i[[1,3]][[1]] , 
+                             data = all_reg_i[[1,4]][[1]], 
+                             id_var = "FIPS", time_var = "Date_num") 
   
   out <- out %>%
     mutate(Dep_var = all_reg_i[[1,1]][[1]]) %>%

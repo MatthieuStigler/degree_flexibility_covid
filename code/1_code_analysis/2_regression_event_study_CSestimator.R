@@ -108,13 +108,8 @@ if(covariates == "_no_covariates") {
   
 }
 
-
-
-#policy_to_test <- c("StatePol_SIP","County_ED","County_SIP")
 policy_to_test <- c("County_ED","County_SIP")
 policy_to_test_CS <- paste0(policy_to_test,"_numeric")
-
-
 
 
 
@@ -156,7 +151,6 @@ if(FALSE){
 
 
 #----- Run DID models
-# null_to_na <- function(x) if_else(is.null(x), NA_real_, drop(x))
 null_to_na <- function(x) if(is.null(x)) NA_real_ else drop(x)
 
 #outcome_var_index=37 #rolling
@@ -181,7 +175,7 @@ if(FALSE){
 
 ## outcome_var_index = 1
 ## big loop
-foreach(outcome_var_index = 1:nrow(outcome_vars), .final = \(x) NULL) %dopar% { ## CHANGE ME TEMP!!
+foreach(outcome_var_index = 1:nrow(outcome_vars), .final = \(x) NULL) %dopar% {
 
   # issue: outcome_var_index = 57
   # issue: individual_policy = policy_to_test_CS[3]
