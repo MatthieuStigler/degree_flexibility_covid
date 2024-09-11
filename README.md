@@ -30,6 +30,7 @@ The project also uses two non-CRAN packages:
 
 The data is structured as following:
 
+``` bash
 ├── code
 │   ├── 0_code_clean
 │   ├── 1_code_analysis
@@ -42,6 +43,7 @@ The data is structured as following:
 │   └── 3_data_analysis_output
 ├── output_replicate
 └── renv
+```
 
   
 - `code`: 5 folders
