@@ -47,7 +47,7 @@ The project is structured as following:
 
   
 - `code`: 5 folders
-  - a `master_run_all.R` file that runds all the files
+  - a `master_run_all.R` file that runs all the files
   - `0_code_clean`: initial code to clean/create the various datasets (0_* scripts) and to merge the datasets (1_* scripts)
   - `1_code_analysis`: code to produce the various DiD and event-study coefficients
   - `2_code_figures_tables`: code to produce the figures and tables in the paper. 
