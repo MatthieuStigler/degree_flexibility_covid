@@ -26,7 +26,7 @@ The project also uses two non-CRAN packages:
 - library("matPkg") version 0.2.50, use: `remotes::install_github("MatthieuStigler/matPkg", upgrade = "never")`
 - library("multidiff") version 0.3.0, use: `remotes::install_github("MatthieuStigler/multiDiff", upgrade = "never")`
 
-## Code description
+## Folder description
 
 The project is structured as following:
 
