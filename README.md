@@ -11,6 +11,8 @@ This dataset offers aggregated and transformed data derived from Google Mobility
 
 ## How to run this in R: packages
 
+This folder uses the Rstudio R-project system. This allows all file paths to be expressed relatively to where the file `degree_flexibility_covid.Rproj` is located. Users should open the `degree_flexibility_covid.Rproj` in Rstudio. Alternatively, they should set the working directory to where `degree_flexibility_covid.Rproj` is located. 
+
 This project was configured with `renv`, although it is deactivated by default within this project. To activate it, and hence get the same package versions as used here, run: 
 
 ```
@@ -24,11 +26,9 @@ The project also uses two non-CRAN packages:
 - library("matPkg") version 0.2.50, use: `remotes::install_github("MatthieuStigler/matPkg", upgrade = "never")`
 - library("multidiff") version 0.3.0, use: `remotes::install_github("MatthieuStigler/multiDiff", upgrade = "never")`
 
-## Description
+## Code description
 
-
-
-The data is structured as following:
+The project is structured as following:
 
 ``` bash
 ├── code
