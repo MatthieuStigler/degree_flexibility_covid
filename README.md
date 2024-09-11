@@ -26,7 +26,23 @@ The project also uses two non-CRAN packages:
 
 ## Description
 
-This contains the folders:
+
+
+The data is structured as following:
+
+├── code
+│   ├── 0_code_clean
+│   ├── 1_code_analysis
+│   ├── 2_code_figures_tables
+│   └── auxiliary_scripts
+├── data_replicate
+│   ├── 0_data_raw
+│   ├── 1_data_intermediate
+│   ├── 2_data_final
+│   └── 3_data_analysis_output
+├── output_replicate
+└── renv
+
   
 - `code`: 5 folders
   - a `master_run_all.R` file that runds all the files
@@ -42,7 +58,9 @@ This contains the folders:
     - `merged_panel_did.rds` the main dataset, in R's native `.rds` format.
     - `merged_panel_event_dummies.rds` the main dataset in event-study form
   - `3_data_analysis_output`: output from the DiD, CS etc analysis. As these analyses can be time- and memoey-consuming, it is preferable to store themn before plotting. 
-- output_replicate: output figures/tables
+- `output_replicate`: output figures/tables
+- `renv`: this is a folder used by `renv`
+
 
 
 ### Specific files
