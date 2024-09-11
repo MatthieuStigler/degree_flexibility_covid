@@ -16,7 +16,9 @@
 *.out
 *.Rout
 *.dta
+*.zip
 *.xls*
+code/auxiliary_packages/*
   *.R.out*
   #/Output/regression_vanilla_2wayFE/**tex #does not work so far...
   *.md

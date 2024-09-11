@@ -51,18 +51,8 @@ n_out_vars_transo <- n_distinct(binded_tidy$Outcome_var)
 
 all.equal(2*3*43*n_out_vars_transo, nrow(binded_tidy))
 
-## data is unique at: 
-mat_is_unique_combo(binded_tidy, specification, Included_covariates,
-                    Treatment_var, Outcome_var, Time)
-
-## Check vals for one group: 43 Time values
-n_distinct(binded_tidy$Time)
-mat_head_group(binded_tidy, specification, Included_covariates,
-               Treatment_var, Outcome_var, n_head=1)
-
 
 ## add info
-#vars_in_long <- readRDS("Output/vars_names_and_formulas/table_responses_names_long.rds")
 vars_in_long <- readRDS("data_replicate/table_responses_names_long.rds")
 
 all_coefs <- binded_tidy %>%
@@ -130,8 +120,7 @@ for (i in  1:nrow(names_out)){
          filename=paste0("output_replicate/fig_", names_out$paper_num[i], "_did_cs_all_",names_out$type[i],"_no_controls.png"),
          width = 10, height = 8)
   
-  # -- With covariates
-  # evt_plot(df = all_coefs %>% filter(specification==v & 
+  # -- With covariates  # evt_plot(df = all_coefs %>% filter(specification==v & 
   #                                      Included_covariates=="prcp + snow + tmean + Cases_dummy + Deaths_dummy") 
   #          ,color = Treatment_var,errorbar = T, fac1_var = Outcome_var) + 
   #   facet_wrap(~Source_name_signed, scales = "free") + #, fac2_var = Regression) 

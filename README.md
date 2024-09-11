@@ -28,17 +28,24 @@ The project also uses two non-CRAN packages:
 
 This contains the folders:
   
-- code replicate: 3 folders
-  - `auxiliary_scripts`: auxiliary scripts that only contain raw functions that will be used within other scrips by using `source()`
+- `code`: 5 folders
+  - a `master_run_all.R` file that runds all the files
+  - `0_code_clean`: initial code to clean/create the various datasets (0_* scripts) and to merge the datasets (1_* scripts)
   - `1_code_analysis`: code to produce the various DiD and event-study coefficients
   - `2_code_figures_tables`: code to produce the figures and tables in the paper. 
-- data_replicate: input data. In particular:
-  - `merged_panel_did.rds` the main dataset, in R's `.rds` format.
-  - `merged_panel_event_dummies.rds` the main dataset in event study format
+  - `auxiliary_scripts`: auxiliary scripts that only contain raw functions that will be used within other scrips by using `source()`
+  - `auxiliary_packages`: auxiliary packages that are not on CRAN but on github. While we recommend installing these packages using `renv`, these are kept here in case for the sake of reproducibility. 
+- `data_replicate`: input data. In particular:
+  - `0_data_raw`: raw data files
+  - `1_data_intermediate`: datasets processed within this project
+  - `2_data_final`: the final datasets used in the analysis. Most importantly:
+    - `merged_panel_did.rds` the main dataset, in R's native `.rds` format.
+    - `merged_panel_event_dummies.rds` the main dataset in event-study form
+  - `3_data_analysis_output`: output from the DiD, CS etc analysis. As these analyses can be time- and memoey-consuming, it is preferable to store themn before plotting. 
 - output_replicate: output figures/tables
 
 
-## Specific files
+### Specific files
 
 Some files need some specific action:
 
