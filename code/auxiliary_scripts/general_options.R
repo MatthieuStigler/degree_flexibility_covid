@@ -20,15 +20,15 @@ gg_height_Tex_half <- 3.3
 ################################
 
 table_covars <- readr::read_rds("data_replicate/1_data_intermediate/vars_names_and_formulas/table_covariates_reg.rds")
-tab_covar_keep <- table_covars %>% 
-  dplyr::filter(stringr::str_detect(covariate_name, "StatePol|County_ED$|County_SIP$")) %>% 
+tab_covar_keep <- table_covars |>
+  dplyr::filter(stringr::str_detect(covariate_name, "StatePol|County_ED$|County_SIP$")) |>
   dplyr::select(covariate_name, covariate_name_clean)  
-policy.facet.lab <- tab_covar_keep$covariate_name_clean %>% 
-  set_names(tab_covar_keep$covariate_name)
+policy.facet.lab <- tab_covar_keep$covariate_name_clean |>
+  rlang::set_names(tab_covar_keep$covariate_name)
 
-rm(table_covars,tab_covar_keep)
+rm(table_covars, tab_covar_keep)
 
-library(tidyverse)
+library(ggplot2)
 font_plot = "Arial Narrow" #"CMU Serif"
 theme_jo <-   theme(plot.title = element_text(hjust=0, size=30, margin=margin(b=10), family=font_plot, face="bold"),
                     plot.subtitle = element_text(hjust=0, size=26, margin=margin(b=15), family=font_plot, face="plain"),

@@ -17,7 +17,7 @@ files_df <- tibble(full_path=list.files("code", pattern= "\\.R$", recursive = TR
 ## need to exclude some:
 files_keep <- files_df %>% 
   ## exclude safegraph files
-  filter(!str_detect(file, "0a_aggregate_safegraph_SD_county|0b_clean_safegraph_county_level_SD")) %>% 
+  filter(!str_detect(file, "clean_safegraph")) %>% 
   ## exclude cuebiq files
   filter(!str_detect(file, "cuebiq")) %>% 
   ## exclude files calling above
@@ -65,7 +65,7 @@ source_throw <- function (path, echo = TRUE, all.names = TRUE) {
 out <- files_keep_order %>% 
   ## don't download every time
   filter(file!="0_clean_us_states.R") %>% 
-  head(10) %>%
+  # head(10) %>%
   mutate(run_result = map_safely(full_path, ~source_throw(.)))
 out
 

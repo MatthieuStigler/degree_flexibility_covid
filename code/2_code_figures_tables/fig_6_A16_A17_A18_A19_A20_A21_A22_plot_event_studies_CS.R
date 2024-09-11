@@ -28,6 +28,8 @@ all_event_studies_aggregated <- list.files("data_replicate/event_studies", full.
   mutate(Control_group_CS = if_else(str_detect(value,"nevertreated"), "Never treated","Not yet treated")) %>%
   mutate(df = map2(value,Control_group_CS, ~readRDS(.x) %>% mutate(Control_group_CS = .y))) 
 
+all_event_studies_aggregated
+
 ## clean/rename data
 binded_tidy <- bind_rows(all_event_studies_aggregated$df) %>%
   filter(Time > -22 & Time < 22) %>% # go to 21

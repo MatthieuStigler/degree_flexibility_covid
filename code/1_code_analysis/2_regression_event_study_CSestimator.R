@@ -35,14 +35,14 @@ options(stringsAsFactors = FALSE) ## Do not load strings as factors
 
 path_out = "data_replicate/3_data_analysis_output/regression_event_study_CS/"
 
-covariates = "_no_covariates" # rerun
-#covariates = "_covariates_covid"
+## This needs to be manually adjusted! run twice
+covariates = "_no_covariates" # first run
+covariates = "_covariates_covid" # second run
 
 
-          #######covariates = "_weather_covariates" # NOT RAN YET
 
 
-          #control_group = "nevertreated" # doesn't really change much
+#control_group = "nevertreated" # doesn't really change much
 control_group = "notyettreated"
 
 if(control_group == "nevertreated") {
