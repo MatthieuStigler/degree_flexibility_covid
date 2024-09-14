@@ -11,7 +11,7 @@ select<-dplyr::select
 
 #-----------------------------------------------------------------------------------------------------------
 
-#from MIT elecions lab, https://electionlab.mit.edu/data
+#from MIT elecions lab, https://electionlab.mit.edu/data, downloaded 2020-04-26 
 elections <- read_csv("data_replicate/0_data_raw/countypres_2000-2016.csv")
 
 elections %<>%

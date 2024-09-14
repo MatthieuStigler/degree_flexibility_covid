@@ -13,8 +13,8 @@ source("code/auxiliary_scripts/general_options.R")
 
 #---------------------------------------------------------------------------------------------------------------
 
-
-df <- read_csv("Data/Cuebiq/UC_Davis_cmi-20200526.csv") #Confidential dataset, not shared
+#Confidential dataset, not shared. Access can be required at https://www.cuebiq.com/
+df <- read_csv("Data/Cuebiq/UC_Davis_cmi-20200526.csv") 
 
 
 check <- df %>%
