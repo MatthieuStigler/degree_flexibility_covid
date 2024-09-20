@@ -72,3 +72,23 @@ Some files need some specific action:
 - `0_clean_map_us_counties.R` (in `code/0_code_clean`): this downloads census data. You will need to request an API key at http://api.census.gov/data/key_signup.html and use it with `tidycensus::census_api_key()`
 - `0a_clean_safegraph_aggregate_SD_county.R` and `0b_clean_safegraph_county_level_SD.R` (in `code/0_code_clean`): these scripts require access to the Safegraph raw data files, access can be requested at https://www.safegraph.com/
 - `0_clean_cuebiq.R` (in `code/0_code_clean`): these scripts require access to the Cuebiq raw data files, access can be requested at https://www.safegraph.com/ https://www.cuebiq.com/
+
+
+### Raw data sources
+
+
+`0_data_raw` contains 5 files:
+  - `all_cities_policy.rds`: collected by the authors and MTurk workers through 2020-05-01
+  - `cities_min_policy.rds`: collected by the authors and MTurk workers through 2020-05-01
+  - `clean_states_declarations.rds`: collected by the authors and MTurk workers through 2020-05-01
+  - `counties_declarations_cleaned.rds` collected by the authors and MTurk workers through 2020-05-01, checked against NACO https://ce.naco.org/?dset=COVID-19&ind=Emergency%20Declaration%20Types 
+  - `counties_declarations_panel.rds`: collected by the authors and MTurk workers through 2020-05-01, checked against NACO https://ce.naco.org/?dset=COVID-19&ind=Emergency%20Declaration%20Types
+  - `county_dex.csv`: downloaded 2020-04-26 from Github  "https://raw.githubusercontent.com/COVIDExposureIndices/COVIDExposureIndices/master/dex_data/county_dex.csv
+  - `countypres_2000-2016.csv`: downloaded 2020-04-26 from MIT elecions lab, https://electionlab.mit.edu/data
+  - `DAILY_WEATHER.dta`: downlaoded 2020-04-30 from Global Historical Climatology Network Daily  https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily
+  - `google_mobility_raw`: downloaded 2020-04-26 from Google: https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv?cachebust=911a386b6c9c230f
+  - `NYT_us_counties.csv`: downloaded 2020-04-26 from New York Times, https://github.com/nytimes/covid-19-data/archive/master.zip
+  - `state_policies_dateissued_group.rds`: downlaoded 2020-04-26 from https://raw.githubusercontent.com/COVID19StatePolicy/SocialDistancing/master/data/USstatesCov19distancingpolicy.csv
+
+
+

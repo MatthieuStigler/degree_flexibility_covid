@@ -5,7 +5,7 @@
 #' ---
 
 library(tidyverse)
-library(collateral)
+library(tictoc)
 
 ################################
 #'## List scripts
@@ -57,33 +57,42 @@ source_throw <- function (path, echo = TRUE, all.names = TRUE) {
   ggplot2::set_last_plot(NULL)
   rm(list = ls_env, envir = env_random)
   rm(env_random)
-  
+  sys
 }
 
 
 ### Now run
+tic()
 out <- files_keep_order %>% 
   ## don't download every time
   filter(file!="0_clean_us_states.R") %>% 
-  # head(10) %>%
-  mutate(run_result = map_safely(full_path, ~source_throw(.)))
+  # head(5) %>%
+  mutate(run_result = map(full_path, ~source_throw(.)))
 out
+toc()
 
+## clean
+out_c <- out %>% 
+  bind_cols(purrr::transpose(pull(., run_result)) %>% 
+              as_tibble)%>% 
+  select(-run_result) %>% 
+  mutate(has_error = map_lgl(error,  ~length(.) > 0), 
+         error = map_chr(.data$error, ~if (length(.) == 0) NA_character_
+                         else paste(unique(.), collapse = " AND ")))
 
 ## check errors
-has_errors(out$run_result)
+any(out_c$has_error)
 
-write_rds(out, "/home/covid19/degree_flexibility_covid_meta/results_rerun_raw.rds")
+write_rds(out_c, "/home/covid19/degree_flexibility_covid_meta/results_rerun_raw.rds")
 # out <- read_rds("/home/covid19/degree_flexibility_covid_meta/results_rerun_raw.rds")
 
-if(any(has_errors(out$run_result))){
-  errors <- out %>% 
-    filter(has_errors(run_result)) %>% 
-    mutate(res_error = map_chr(run_result, ~pluck(., "error") %>% as.character)) %>% 
-    select(file, res_error)
+if(any(out_c$has_error)){
+  # errors <- out %>% 
+  #   filter(has_errors(run_result)) %>% 
+  #   mutate(res_error = map_chr(run_result, ~pluck(., "error") %>% as.character)) %>% 
+  #   select(file, res_error)
   
-  errors
-  errors$res_error
+  out
 }
 
 

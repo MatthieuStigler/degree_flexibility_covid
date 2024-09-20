@@ -10,8 +10,8 @@ select<-dplyr::select
 
 
 #-----------------------------------------------------------------------------------------------------------
-
-weather <- read_dta("data_replicate/0_data_raw/DAILY_WEATHER_IDW200_2020_v2.dta") 
+# Downlaoded from Global Historical Climatology Network Daily 2020-04-30 https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily
+weather <- read_dta("data_replicate/0_data_raw/DAILY_WEATHER.dta") 
 
 check <- weather %>% filter(is.na(Tmean))
 unique(check$fips) #22055 28127 22113
