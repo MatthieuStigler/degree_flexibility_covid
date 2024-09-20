@@ -75,7 +75,7 @@ toc()
 out_c <- out %>% 
   bind_cols(purrr::transpose(pull(., run_result)) %>% 
               as_tibble)%>% 
-  select(-run_result) %>% 
+  dplyr::select(-run_result) %>% 
   mutate(has_error = map_lgl(error,  ~length(.) > 0), 
          error = map_chr(.data$error, ~if (length(.) == 0) NA_character_
                          else paste(unique(.), collapse = " AND ")))

@@ -22,7 +22,7 @@ source("code/auxiliary_scripts/general_options.R")
 
 
 
-cores_number = 8
+cores_number = 2
 parallel::detectCores() 
 getDoParWorkers() #check
 registerDoParallel(cores=cores_number)
