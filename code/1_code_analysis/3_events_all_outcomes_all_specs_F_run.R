@@ -54,7 +54,6 @@ vars_transforms = bind_rows(outcome_long %>% mutate(Weights = F),
 vars_treatment <- names(df)[str_detect(names(df), "_((b)[0-9]{1,2}$)")] 
 vars_treatment_pre <- vars_treatment[!str_detect(vars_treatment,"_b1$")] #remove the baseline dummy
 tests_pre_all <- as.character(paste0(vars_treatment_pre,"=0"))
-rm(vars_treatment,vars_treatment_pre)
 
 
 set.seed(101)
@@ -79,9 +78,11 @@ if(run_evt_reg) { #takes a while
                                                                 vars_treatment =c("County_ED", "County_SIP", "StatePol_ED", "StatePol_SIP","StatePol_Resclo"),
                                                                 vars_controls = c("City_earliest_policy_pop_share","prcp","snow","tmean","Cases_dummy","Deaths_dummy"), 
                                                                 var_clustering = "FIPS", pop_weights = ..2)
-    )) %>% # run F test
+    )) %>%
+    # run F test
     mutate(Ftest = pmap(.l = list(reg), .f =  ~linearHypothesis(..1, tests_pre_all, test = "F") %>% get("Pr(>F)",.) %>% `[[`(2) )#Retrieve p-value here
-    ) %>% # extract coefs
+    ) %>% 
+    # extract coefs
     mutate(tidy = map(reg, 
                       ~evt_tidy(reg_output = .x, baseline = -1, number_lags = 21, number_leads = 21,
                                 vars_treatment =c("County_ED", "County_SIP", "StatePol_ED", "StatePol_SIP","StatePol_Resclo"))    )
@@ -158,7 +159,7 @@ if(run_evt_reg) { #takes a while
   all_objects <- list.files(path_out, full.names = TRUE)
   
   tidy_all <- readRDS(all_objects[[1]])
-  tidy_all %>% count(Outcome_var) %>% count(n)
+  # tidy_all %>% count(Outcome_var) %>% count(n)
   
   
   for (i in 2:length(all_objects)) {
@@ -173,12 +174,10 @@ if(run_evt_reg) { #takes a while
     mutate(Treatment_var = str_replace(Treatment_var,"Resclo","ERC")) %>% #move elsewhere?
     mutate(Treatment_var = str_replace(Treatment_var,"SIP","SIPO")) %>% #move elsewhere?
     mutate(Treatment_var = str_remove(Treatment_var,"Pol"))  %>%
-    
     mutate(Policies_in_regression = str_replace(Policies_in_regression,"_"," ")) %>% #move elsewhere?
     mutate(Policies_in_regression = str_replace(Policies_in_regression,"Resclo","ERC")) %>% #move elsewhere?
     mutate(Policies_in_regression = str_replace(Policies_in_regression,"SIP","SIPO")) %>% #move elsewhere?
     mutate(Policies_in_regression = str_remove(Policies_in_regression,"Pol"))  %>%
-    
     mutate(Policies_in_regression_f = factor(Policies_in_regression, 
                                              levels = c("County ED", "County SIPO", "State ED", 
                                                         "State SIPO","State ERC", "Simultaneous policies")))

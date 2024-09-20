@@ -59,11 +59,12 @@ source_throw <- function (path, echo = TRUE, all.names = TRUE) {
   ggplot2::set_last_plot(NULL)
   rm(list = ls_env, envir = env_random)
   rm(env_random)
-  toc()
+  a <- toc()
+  sys$run_time_elapsed <- a$toc-a$tic
   sys
 }
 
-source_throw(files_keep_order$full_path[[1]])
+out_TEST1 <- source_throw(path=files_keep_order$full_path[[3]])
 
 
 ### Now run
@@ -73,7 +74,7 @@ tic()
 out <- files_keep_order %>% 
   ## don't download every time
   filter(file!="0_clean_us_states.R") %>% 
-  # head(5) %>%
+  head(3) %>%
   mutate(run_result = map(full_path, ~source_throw(.)))
 out
 toc()
@@ -83,7 +84,8 @@ out_c <- out %>%
   bind_cols(purrr::transpose(pull(., run_result)) %>% 
               as_tibble)%>% 
   dplyr::select(-run_result) %>% 
-  mutate(has_error = map_lgl(error,  ~length(.) > 0), 
+  mutate(run_time_elapsed = unlist(run_time_elapsed),
+         has_error = map_lgl(error,  ~length(.) > 0), 
          error = map_chr(.data$error, ~if (length(.) == 0) NA_character_
                          else paste(unique(.), collapse = " AND ")))
 
@@ -93,9 +95,9 @@ write_rds(out_c, "/home/covid19/degree_flexibility_covid_meta/results_rerun_raw.
 
 if(any(out_c$has_error)){
   out_c <- read_rds("/home/covid19/degree_flexibility_covid_meta/results_rerun_raw.rds") %>% 
-    filter(has_error) 
+    dplyr::filter(has_error) 
   out_c %>% 
-    select(-file, -folder, -order, -result)
+    dplyr::select(-file, -folder, -order, -result)
   out_c$error
 }
 

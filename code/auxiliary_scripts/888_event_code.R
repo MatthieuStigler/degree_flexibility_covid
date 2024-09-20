@@ -211,7 +211,7 @@ evt_get_lag_val <- function(df, var = term, add_more=TRUE){
 evt_reg <- function(df, vars_treatment_reg,
                     unit_var=FIPS, time_var=Date, 
                     baseline, var_dependent,vars_controls = "",var_clustering,
-                    direct_effect=TRUE, show_formula = T, pop_weights = F) {
+                    direct_effect=TRUE, show_formula = FALSE, pop_weights = TRUE) {
   
   
   # If interactions, remove them
@@ -234,7 +234,7 @@ evt_reg <- function(df, vars_treatment_reg,
       baseline_reg <- paste0("_f",abs(baseline),"$")
     }
   } else {
-    stop("Yo baseline needs to be an integer!")
+    stop("baseline needs to be an integer!")
   }
   
   dummy_vars_in_reg <- dummy_vars_in_reg[!str_detect(dummy_vars_in_reg, baseline_reg)] 

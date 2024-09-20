@@ -41,8 +41,6 @@ remove_na_var <- function(var_to_clean, df) {
 }
 
 check <- remove_na_var(Device_exposure_a_log, df)
-check <- remove_na_var(gm_retail_and_recreation, df)
-check <- remove_na_var(gm_transit_stations, df)
 
 #-----  Put outcome in long
 outcome_vars <- readRDS("data_replicate/1_data_intermediate/vars_names_and_formulas/table_responses_names_long.rds") %>%
@@ -61,7 +59,7 @@ rm(df)
 all_dep <- outcome_vars$list_var[!str_detect(outcome_vars$list_var,"gm_")] #necessary, too many missing values
 all_indep <- c("StatePol_ED","StatePol_SIP","StatePol_Resclo","County_ED","County_SIP")
 
-all_reg <- expand_grid(all_dep,all_indep) #%>% head(1)
+all_reg <- expand_grid(all_dep,all_indep) 
 
 
 # Prepare dataset
@@ -69,7 +67,6 @@ all_reg %<>%
   mutate(regression = map2_chr(all_dep,all_indep, ~paste0(.x," ~ ",.y))) %>%
   mutate(regression = map(regression, ~Formula::as.Formula(.x))) 
 
-object.size(all_reg) 
 
 
 all_decomps <- list(rep(NA,nrow(all_reg)))
@@ -86,7 +83,8 @@ all_decomps <- foreach(reg=1:nrow(all_reg)) %dopar% {
   
   out <- bacon_decomp_custom(formula = all_reg_i[[1,3]][[1]] , 
                              data = all_reg_i[[1,4]][[1]], 
-                             id_var = "FIPS", time_var = "Date_num") 
+                             id_var = "FIPS", time_var = "Date_num",
+                             quietly = TRUE) 
   
   out <- out %>%
     mutate(Dep_var = all_reg_i[[1,1]][[1]]) %>%
