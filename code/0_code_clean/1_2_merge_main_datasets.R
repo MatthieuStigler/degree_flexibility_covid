@@ -72,7 +72,7 @@ rm(merged)
 
 #================# Generate log first (sign afterwards)
 
-outcomes_names <- readRDS("data_replicate/table_responses_names.rds")
+outcomes_names <- readRDS("data_replicate/1_data_intermediate/vars_names_and_formulas/table_responses_names.rds")
 
 unique_outcome_names_non_gm <- unique(outcomes_names$list_var) #%>%
   #str_remove(.,"_pct")  # need to deal with Median_home_perc afterwards

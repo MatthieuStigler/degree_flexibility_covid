@@ -45,7 +45,7 @@ check <- remove_na_var(gm_retail_and_recreation, df)
 check <- remove_na_var(gm_transit_stations, df)
 
 #-----  Put outcome in long
-outcome_vars <- readRDS("data_replicate/table_responses_names_long.rds") %>%
+outcome_vars <- readRDS("data_replicate/1_data_intermediate/vars_names_and_formulas/table_responses_names_long.rds") %>%
   filter(Source_short != "gm" & specification %in% c("level","log"))
 
 df2 <- df %>%

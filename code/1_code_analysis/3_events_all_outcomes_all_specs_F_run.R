@@ -38,7 +38,7 @@ df <- readRDS("data_replicate/2_data_final/merged_panel_event_dummies.rds")
 #------------------------------------------------------------------------------------------------------------
 
 #-----  Get outcomes
-outcome_long <- readRDS("data_replicate/table_responses_names_long.rds") %>%
+outcome_long <- readRDS("data_replicate/1_data_intermediate/vars_names_and_formulas/table_responses_names_long.rds") %>%
   filter(Source!="Google" | specification == "level") #Keeping google in level
 
 

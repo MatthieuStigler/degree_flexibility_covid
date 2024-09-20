@@ -113,7 +113,14 @@ Some data cannot be made publicly available.
 
 The files were run with R 4.4.1. Scripts in the folder `code/1_code_analysis` are memory and time intensive, and thus their output is shared in the folder `data_replicate/3_data_analysis_output` to avoid lengthy run times. 
 
-The file `code/1_code_analysis/3_events_all_outcomes_all_specs_F_run.R` uses parallel processing, and thus can be very memory intensive. 
+Some files are particularly slow:
+
+- `code/1_code_analysis/2_regression_event_study_CSestimator.R`
+- `code/1_code_analysis/3_events_all_outcomes_all_specs_F_run.R` 
+
+They use parallel processing, and thus can be very memory intensive. One might want to adjust the `cores_number = 12` value to reduce RAM memory usage. 
+
+
 
 ### Software Requirements
 

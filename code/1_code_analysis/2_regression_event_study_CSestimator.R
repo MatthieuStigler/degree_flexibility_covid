@@ -56,13 +56,12 @@ if(control_group == "nevertreated") {
 
 #-----  Put outcome in long
 #outcome_vars <- readRDS("Output/vars_names_and_formulas/table_responses_names.rds") 
-outcome_vars <- readRDS("data_replicate/table_responses_names_long.rds") %>%
+outcome_vars <- readRDS("data_replicate/1_data_intermediate/vars_names_and_formulas/table_responses_names_long.rds") %>%
   filter(Source_short != "gm" | specification == "level")
 
 did.df <- readRDS("data_replicate/2_data_final/merged_panel_did.rds") #Version standard
 
 missing_weather <- did.df %>% filter(is.na(tmean))
-unique(missing_weather$FIPS)
 
 did.df_prepared <- did.df %>%
   mutate(Date_numeric = as.numeric(Date)) %>%
@@ -108,7 +107,7 @@ if(covariates == "_no_covariates") {
   
 }
 
-policy_to_test <- c("County_ED","County_SIP")
+policy_to_test <- c("County_ED","County_SIP", "StatePol_SIP")
 policy_to_test_CS <- paste0(policy_to_test,"_numeric")
 
 

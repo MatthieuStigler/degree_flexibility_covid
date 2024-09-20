@@ -23,12 +23,15 @@ pathin = "data_replicate/3_data_analysis_output/regression_event_study_CS/"
 
 
 ## read all "aggregated_att", from did::aggte(did::att_gt())
-all_event_studies_aggregated <- list.files("data_replicate/event_studies", full.names = TRUE, pattern = ".rds") %>% 
+# all_event_studies_aggregated <- list.files("data_replicate/event_studies", full.names = TRUE, pattern = ".rds") %>% 
+all_event_studies_aggregated <- list.files("data_replicate/3_data_analysis_output/regression_event_study_CS/aggregated_att/", 
+                                           full.names = TRUE, pattern = ".rds") %>% 
   as_tibble() %>% #head(10) %>%
   mutate(Control_group_CS = if_else(str_detect(value,"nevertreated"), "Never treated","Not yet treated")) %>%
   mutate(df = map2(value,Control_group_CS, ~readRDS(.x) %>% mutate(Control_group_CS = .y))) 
 
 all_event_studies_aggregated
+if(nrow(all_event_studies_aggregated)==0) stop("No files")
 
 ## clean/rename data
 binded_tidy <- bind_rows(all_event_studies_aggregated$df) %>%
@@ -53,7 +56,7 @@ all.equal(2*3*43*n_out_vars_transo, nrow(binded_tidy))
 
 
 ## add info
-vars_in_long <- readRDS("data_replicate/table_responses_names_long.rds")
+vars_in_long <- readRDS("data_replicate/1_data_intermediate/vars_names_and_formulas/table_responses_names_long.rds")
 
 all_coefs <- binded_tidy %>%
   left_join(vars_in_long %>%

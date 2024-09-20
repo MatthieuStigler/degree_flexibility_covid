@@ -26,7 +26,7 @@ source("code/auxiliary_scripts/general_options.R")
 data_reg <- readRDS("data_replicate/2_data_final/merged_panel_did.rds")
 
 
-table_vars <- read_rds("data_replicate/table_responses_names.rds")
+table_vars <- read_rds("data_replicate/1_data_intermediate/vars_names_and_formulas/table_responses_names.rds")
 table_covars <- read_rds("data_replicate/1_data_intermediate/vars_names_and_formulas/table_covariates_reg.rds")
 
 ################################

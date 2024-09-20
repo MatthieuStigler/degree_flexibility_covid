@@ -18,7 +18,7 @@ source("code/auxiliary_scripts/general_options.R")
 
 
 #-----------------------------------------------------------------------------------------------------------------
-vars_in_long <- readRDS("data_replicate/table_responses_names_long.rds")
+vars_in_long <- readRDS("data_replicate/1_data_intermediate/vars_names_and_formulas/table_responses_names_long.rds")
 
 all_decomps <- readRDS("data_replicate/3_data_analysis_output/all_bacon_decomps_individual_policies.rds")
 

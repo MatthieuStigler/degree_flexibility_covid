@@ -45,6 +45,8 @@ files_keep_order
 
 ## aux fun
 source_throw <- function (path, echo = TRUE, all.names = TRUE) {
+  cat("Running file: ", path, "\n")
+  tic()
   gc()
   mem_before <- pryr::mem_used()
   pkgs_before <- .packages()
@@ -57,11 +59,16 @@ source_throw <- function (path, echo = TRUE, all.names = TRUE) {
   ggplot2::set_last_plot(NULL)
   rm(list = ls_env, envir = env_random)
   rm(env_random)
+  toc()
   sys
 }
 
+source_throw(files_keep_order$full_path[[1]])
+
 
 ### Now run
+cat("Running scripts on ", as.character(Sys.Date()), "\n")
+
 tic()
 out <- files_keep_order %>% 
   ## don't download every time
@@ -82,17 +89,14 @@ out_c <- out %>%
 
 ## check errors
 any(out_c$has_error)
-
 write_rds(out_c, "/home/covid19/degree_flexibility_covid_meta/results_rerun_raw.rds")
-# out <- read_rds("/home/covid19/degree_flexibility_covid_meta/results_rerun_raw.rds")
 
 if(any(out_c$has_error)){
-  # errors <- out %>% 
-  #   filter(has_errors(run_result)) %>% 
-  #   mutate(res_error = map_chr(run_result, ~pluck(., "error") %>% as.character)) %>% 
-  #   select(file, res_error)
-  
-  out
+  out_c <- read_rds("/home/covid19/degree_flexibility_covid_meta/results_rerun_raw.rds") %>% 
+    filter(has_error) 
+  out_c %>% 
+    select(-file, -folder, -order, -result)
+  out_c$error
 }
 
 

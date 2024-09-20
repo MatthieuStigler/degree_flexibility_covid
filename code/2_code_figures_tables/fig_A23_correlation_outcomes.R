@@ -25,7 +25,7 @@ options(scipen=999)
 
 data_reg <- readRDS("data_replicate/2_data_final/merged_panel_did.rds")
 
-table_vars <- read_rds("data_replicate/table_responses_names.rds")
+table_vars <- read_rds("data_replicate/1_data_intermediate/vars_names_and_formulas/table_responses_names.rds")
 
 vars_level <- unique(table_vars$list_var)
 outcomes_levels <- table_vars %>% select(list_var,list_names) %>% distinct()

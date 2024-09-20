@@ -33,9 +33,8 @@ merged_cleaned <- counties %>%
 
   
 check <- cities %>%
-  anti_join(counties) %>%
-  as.data.frame() %>%
-  print()
+  anti_join(counties, by = join_by(FIPS)) %>%
+  as.data.frame() 
 
 
 #-----------------------------------------------------------------------------
