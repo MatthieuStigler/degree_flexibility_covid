@@ -82,6 +82,10 @@ formus_all <- formus_log %>%
 
 formus_all
 
+## export
+write_rds(formus_all, "data_replicate/1_data_intermediate/vars_names_and_formulas/formus_all_keep.rds")
+## READ AS: formus_all <- read_rds("data_replicate/1_data_intermediate/vars_names_and_formulas/formus_all_keep.rds") # from code/1_code_analysis/1_
+
 ################################
 #'## Run regs
 ################################

@@ -13,7 +13,7 @@ select<-dplyr::select
 source("code/auxiliary_scripts/general_options.R")
 #-------------------------------------------- ----------------------------------------------------------------
 
-declarations <- readRDS("data_replicate/counties_declarations_cleaned.rds")
+declarations <- readRDS("data_replicate/0_data_raw/counties_declarations_cleaned.rds")
 
 
 

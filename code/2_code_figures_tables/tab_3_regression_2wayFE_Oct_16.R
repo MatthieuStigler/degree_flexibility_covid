@@ -5,11 +5,8 @@
 #' run_final: TRUE
 #' ---
 
-my_packages <- c("tidyverse","magrittr","lfe","stargazer", "broom", "future", "furrr", "Formula")
+my_packages <- c("tidyverse","magrittr","lfe","stargazer", "broom", "Formula")
 sapply(my_packages, require, character.only = TRUE)
-sapply(my_packages, function(x) packageVersion(x) %>%  as.character)
-
-if(!require(matPkg)) remotes::install_github("MatthieuStigler/matPkg", upgrade = "never")
 
 map<-purrr::map #For the nice iterations
 select<-dplyr::select
@@ -25,24 +22,30 @@ source("code/auxiliary_scripts/general_options.R")
 
 data_reg <- readRDS("data_replicate/2_data_final/merged_panel_did.rds")
 
-
 table_vars <- read_rds("data_replicate/1_data_intermediate/vars_names_and_formulas/table_responses_names.rds")
 table_covars <- read_rds("data_replicate/1_data_intermediate/vars_names_and_formulas/table_covariates_reg.rds")
+# table_formulas <- read_rds("data_replicate/1_data_intermediate/vars_names_and_formulas/table_formulas_reg.rds")
+
+formus_all <- read_rds("data_replicate/1_data_intermediate/vars_names_and_formulas/formus_all_keep.rds") # from code/1_code_analysis/1_
+
+################################
+#'## Prepare regs
+################################
+
+formus_completely_home <- formus_all %>%
+  filter(str_detect(formu_char,"Completely_home_log ~"))
 
 ################################
 #'## Run regs
 ################################
 
 ## RUN ALL
-if(interactive()) future::plan(sequential) else future::plan(future::multisession)
-options(mc.cores=6)
-
-out <- readRDS("data_replicate/formus_completely_home.rds") %>%
-  mutate(reg = furrr::future_map(formula, ~felm(as.Formula(.x), data=data_reg) ))
+out <- formus_completely_home %>%
+  mutate(reg = map(formula, ~felm(Formula::as.Formula(.x), data=data_reg) ))
 
 
 ################################
-#'## Convert to tex 
+#'## Export to tex 
 ################################
 #
 stargaze_reg_df_all_diffLogs(df_regs = out,

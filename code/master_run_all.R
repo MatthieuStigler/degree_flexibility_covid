@@ -70,11 +70,12 @@ out_TEST1 <- source_throw(path=files_keep_order$full_path[[3]])
 ### Now run
 cat("Running scripts on ", as.character(Sys.Date()), "\n")
 
-tic()
+tic("Total run time")
 out <- files_keep_order %>% 
+  filter(full_path %in% out_c_err$full_path) %>% 
   ## don't download every time
   filter(file!="0_clean_us_states.R") %>% 
-  head(3) %>%
+  # head(3) %>%
   mutate(run_result = map(full_path, ~source_throw(.)))
 out
 toc()
@@ -91,14 +92,26 @@ out_c <- out %>%
 
 ## check errors
 any(out_c$has_error)
+
+## print timing
+out_c %>% 
+  arrange(desc(run_time_elapsed))
+
+total_time_min <- sum(out_c$run_time_elapsed) %/% 60
+total_time_hour <- total_time_min %/% (60)
+min_left <- total_time_min %% (60)
+paste("run in", total_time_hour, "hours", min_left, "minutes")
+
+### export
 write_rds(out_c, "/home/covid19/degree_flexibility_covid_meta/results_rerun_raw.rds")
 
 if(any(out_c$has_error)){
-  out_c <- read_rds("/home/covid19/degree_flexibility_covid_meta/results_rerun_raw.rds") %>% 
+  out_c <- read_rds("/home/covid19/degree_flexibility_covid_meta/results_rerun_raw.rds") 
+  out_c_err <- out_c%>% 
     dplyr::filter(has_error) 
-  out_c %>% 
+  out_c_err %>% 
     dplyr::select(-file, -folder, -order, -result)
-  out_c$error
+  out_c_err$error
 }
 
 

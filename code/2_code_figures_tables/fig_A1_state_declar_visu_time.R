@@ -20,7 +20,7 @@ source("code/auxiliary_scripts/888_misc_functions.R")
 ################################
 
 declar_stat_old <- readRDS("data_replicate/0_data_raw/clean_states_declarations.rds")
-declar_counties <- readRDS("data_replicate/declarations_counties_states_dates.rds")
+declar_counties <- readRDS("data_replicate/1_data_intermediate/declarations_counties_states_dates.rds")
 us_states_df <- read_csv("data_replicate/1_data_intermediate/US_states_dataOnly.csv")
 table_covars <- read_rds("data_replicate/1_data_intermediate/vars_names_and_formulas/table_covariates_reg.rds")
 

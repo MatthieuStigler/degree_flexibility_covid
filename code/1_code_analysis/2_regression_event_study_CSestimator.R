@@ -36,8 +36,8 @@ options(stringsAsFactors = FALSE) ## Do not load strings as factors
 path_out = "data_replicate/3_data_analysis_output/regression_event_study_CS/"
 
 ## This needs to be manually adjusted! run twice
-covariates = "_no_covariates" # first run
 covariates = "_covariates_covid" # second run
+covariates = "_no_covariates" # first run
 
 
 

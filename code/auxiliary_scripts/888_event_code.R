@@ -318,7 +318,7 @@ evt_tidy <- function(reg_output,vars_treatment,
     
   }
   
-  print(output_made_tidy)
+  # print(output_made_tidy)
   
   output_made_tidy <- output_made_tidy %>% 
     mutate(Before_colons = str_extract(term, ".*(?=:)") ) %>%
