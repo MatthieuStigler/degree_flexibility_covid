@@ -85,6 +85,11 @@ As a consequence, some files cannot be run either:
 
 However, files in `code/1_code_analysis` and `code/2_code_figures_tables` still can be run. 
 
+### master_run_all
+
+The file `code/master_run_all.R` runs all files, except the ones cited above. It contains a `run_heavy` option, which is  `FALSE` by default, thus excluding very heavy files from running. 
+
+The file `code/1_code_analysis/2_regression_event_study_CSestimator.R` uses a very important amount of RAM memory (120 GB!!) when used with parallel processing. To avoid too heavy computations, it needs to be run twice by changing one line of code, see line `## This needs to be manually adjusted! run twice`. 
 
 ## Data Availability and Provenance Statements
 
