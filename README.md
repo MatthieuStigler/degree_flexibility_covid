@@ -9,11 +9,12 @@ The code is also hosted on https://github.com/MatthieuStigler/degree_flexibility
 
 This dataset offers aggregated and transformed data derived from Google Mobility, Safegraph, Cuebiq, and PlaceIQ. To respect their data use agreements, we only provide anonymized county-level information.
 
-## How to run this in R: packages
+## How to run this, Software Requirements: R and R packages
 
-This folder uses the Rstudio R-project system. This allows all file paths to be expressed relatively to where the file `degree_flexibility_covid.Rproj` is located. Users should open the `degree_flexibility_covid.Rproj` in Rstudio. Alternatively, they should set the working directory to where `degree_flexibility_covid.Rproj` is located. 
 
-This project was configured with `renv`, although it is deactivated by default within this project. To activate it, and hence get the same package versions as used tofor the paper, run: 
+This folder uses R and the Rstudio R-project system. This allows all file paths to be expressed relatively to where the file `degree_flexibility_covid.Rproj` is located. Users should open the `degree_flexibility_covid.Rproj` in Rstudio. Alternatively, they should set the working directory to where `degree_flexibility_covid.Rproj` is located. 
+
+R and R package versions can be read from the `renv.lock` file. This project was configured with `renv`, although it is deactivated by default within this project. To activate it, and hence get the same package versions as used for the paper, run: 
 
 ```
 renv::activate()
@@ -21,10 +22,24 @@ renv::restore()
 ```
 For more information, see https://rstudio.github.io/renv/articles/renv.html
 
-The project also uses two non-CRAN packages:
+The project also uses two non-CRAN packages, tht can either be installed manually using the command below, or by running `renv::activate()`
 
 - library("matPkg") version 0.2.50, use: `remotes::install_github("MatthieuStigler/matPkg", upgrade = "never")`
 - library("multidiff") version 0.3.0, use: `remotes::install_github("MatthieuStigler/multiDiff", upgrade = "never")`
+
+## Computational requirements
+
+The full project was run (using `master_run_all.R`, see below) on a Linux server with 128 GB of RAM. R version was 4.4.1 (see also `renv.lock`). Some scripts in the folder `code/1_code_analysis` are memory and time intensive, and thus their output is made available in the folder `data_replicate/3_data_analysis_output` to avoid lengthy run times. 
+
+Some files are particularly slow:
+
+- `code/1_code_analysis/2_regression_event_study_CSestimator.R`
+- `code/1_code_analysis/3_events_all_outcomes_all_specs_F_run.R` 
+
+They use parallel processing, and thus can be very memory intensive. One might want to adjust the `cores_number = 12` value to reduce RAM memory usage. 
+
+
+
 
 ## Folder structure quick overview
 
@@ -91,6 +106,9 @@ The file `code/master_run_all.R` runs all files, except the ones cited above. It
 
 The file `code/1_code_analysis/2_regression_event_study_CSestimator.R` uses a very important amount of RAM memory (120 GB!!) when used with parallel processing. To avoid too heavy computations, it needs to be run twice by changing one line of code, see line `## This needs to be manually adjusted! run twice`. 
 
+
+
+
 ## Data Availability and Provenance Statements
 
 ### Summary of Availability
@@ -114,19 +132,3 @@ Some data cannot be made publicly available.
   - `state_policies_dateissued_group.rds`: downloaded 2020-04-26 from https://raw.githubusercontent.com/COVID19StatePolicy/SocialDistancing/master/data/USstatesCov19distancingpolicy.csv
 
 
-## Computational requirements
-
-The files were run with R 4.4.1. Scripts in the folder `code/1_code_analysis` are memory and time intensive, and thus their output is shared in the folder `data_replicate/3_data_analysis_output` to avoid lengthy run times. 
-
-Some files are particularly slow:
-
-- `code/1_code_analysis/2_regression_event_study_CSestimator.R`
-- `code/1_code_analysis/3_events_all_outcomes_all_specs_F_run.R` 
-
-They use parallel processing, and thus can be very memory intensive. One might want to adjust the `cores_number = 12` value to reduce RAM memory usage. 
-
-
-
-### Software Requirements
-
-All software requirements can be read from the `renv.lock` file. 

@@ -368,27 +368,48 @@ the code if mistakes are discovered.</p>
 Google Mobility, Safegraph, Cuebiq, and PlaceIQ. To respect their data
 use agreements, we only provide anonymized county-level information.</p>
 </div>
-<div id="how-to-run-this-in-r-packages" class="section level2">
-<h2>How to run this in R: packages</h2>
-<p>This folder uses the Rstudio R-project system. This allows all file
-paths to be expressed relatively to where the file
+<div id="how-to-run-this-software-requirements-r-and-r-packages" class="section level2">
+<h2>How to run this, Software Requirements: R and R packages</h2>
+<p>This folder uses R and the Rstudio R-project system. This allows all
+file paths to be expressed relatively to where the file
 <code>degree_flexibility_covid.Rproj</code> is located. Users should
 open the <code>degree_flexibility_covid.Rproj</code> in Rstudio.
 Alternatively, they should set the working directory to where
 <code>degree_flexibility_covid.Rproj</code> is located.</p>
-<p>This project was configured with <code>renv</code>, although it is
+<p>R and R package versions can be read from the <code>renv.lock</code>
+file. This project was configured with <code>renv</code>, although it is
 deactivated by default within this project. To activate it, and hence
-get the same package versions as used tofor the paper, run:</p>
+get the same package versions as used for the paper, run:</p>
 <pre><code>renv::activate()
 renv::restore()</code></pre>
 <p>For more information, see <a href="https://rstudio.github.io/renv/articles/renv.html" class="uri">https://rstudio.github.io/renv/articles/renv.html</a></p>
-<p>The project also uses two non-CRAN packages:</p>
+<p>The project also uses two non-CRAN packages, tht can either be
+installed manually using the command below, or by running
+<code>renv::activate()</code></p>
 <ul>
 <li>library(“matPkg”) version 0.2.50, use:
 <code>remotes::install_github(&quot;MatthieuStigler/matPkg&quot;, upgrade = &quot;never&quot;)</code></li>
 <li>library(“multidiff”) version 0.3.0, use:
 <code>remotes::install_github(&quot;MatthieuStigler/multiDiff&quot;, upgrade = &quot;never&quot;)</code></li>
 </ul>
+</div>
+<div id="computational-requirements" class="section level2">
+<h2>Computational requirements</h2>
+<p>The full project was run (using <code>master_run_all.R</code>, see
+below) on a Linux server with 128 GB of RAM. R version was 4.4.1 (see
+also <code>renv.lock</code>). Some scripts in the folder
+<code>code/1_code_analysis</code> are memory and time intensive, and
+thus their output is made available in the folder
+<code>data_replicate/3_data_analysis_output</code> to avoid lengthy run
+times.</p>
+<p>Some files are particularly slow:</p>
+<ul>
+<li><code>code/1_code_analysis/2_regression_event_study_CSestimator.R</code></li>
+<li><code>code/1_code_analysis/3_events_all_outcomes_all_specs_F_run.R</code></li>
+</ul>
+<p>They use parallel processing, and thus can be very memory intensive.
+One might want to adjust the <code>cores_number = 12</code> value to
+reduce RAM memory usage.</p>
 </div>
 <div id="folder-structure-quick-overview" class="section level2">
 <h2>Folder structure quick overview</h2>
@@ -519,27 +540,6 @@ Google: <a href="https://www.gstatic.com/covid19/mobility/Global_Mobility_Report
 Times, <a href="https://github.com/nytimes/covid-19-data/archive/master.zip" class="uri">https://github.com/nytimes/covid-19-data/archive/master.zip</a>
 - <code>state_policies_dateissued_group.rds</code>: downloaded
 2020-04-26 from <a href="https://raw.githubusercontent.com/COVID19StatePolicy/SocialDistancing/master/data/USstatesCov19distancingpolicy.csv" class="uri">https://raw.githubusercontent.com/COVID19StatePolicy/SocialDistancing/master/data/USstatesCov19distancingpolicy.csv</a></p>
-</div>
-</div>
-<div id="computational-requirements" class="section level2">
-<h2>Computational requirements</h2>
-<p>The files were run with R 4.4.1. Scripts in the folder
-<code>code/1_code_analysis</code> are memory and time intensive, and
-thus their output is shared in the folder
-<code>data_replicate/3_data_analysis_output</code> to avoid lengthy run
-times.</p>
-<p>Some files are particularly slow:</p>
-<ul>
-<li><code>code/1_code_analysis/2_regression_event_study_CSestimator.R</code></li>
-<li><code>code/1_code_analysis/3_events_all_outcomes_all_specs_F_run.R</code></li>
-</ul>
-<p>They use parallel processing, and thus can be very memory intensive.
-One might want to adjust the <code>cores_number = 12</code> value to
-reduce RAM memory usage.</p>
-<div id="software-requirements" class="section level3">
-<h3>Software Requirements</h3>
-<p>All software requirements can be read from the <code>renv.lock</code>
-file.</p>
 </div>
 </div>
 </div>
