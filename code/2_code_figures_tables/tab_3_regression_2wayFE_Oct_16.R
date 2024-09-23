@@ -33,7 +33,7 @@ formus_all <- read_rds("data_replicate/1_data_intermediate/vars_names_and_formul
 ################################
 
 formus_completely_home <- formus_all %>%
-  filter(str_detect(formu_char,"Completely_home_log ~"))
+  dplyr::filter(str_detect(formu_char,"Completely_home_log ~"))
 
 ################################
 #'## Run regs

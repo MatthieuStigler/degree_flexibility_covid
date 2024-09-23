@@ -14,6 +14,7 @@ library(tictoc)
 files_df <- tibble(full_path=list.files("code", pattern= "\\.R$", recursive = TRUE, full.names=TRUE)) %>% 
   mutate(file = basename(full_path))
 
+
 ## need to exclude some:
 files_keep <- files_df %>% 
   ## exclude safegraph files
@@ -22,11 +23,17 @@ files_keep <- files_df %>%
   filter(!str_detect(file, "cuebiq")) %>% 
   ## exclude files calling above
   filter(!str_detect(file, "1_2_merge_main_datasets")) %>% 
-  ## file need API key:
+  ## exclude file need API key:
   filter(file!="0_clean_map_us_counties.R") %>%
   ## exclude own file
   filter(file!="master_run_all.R")
 
+## exclude heavy files
+run_heavy <- FALSE
+if(!run_heavy){
+  files_keep <- files_keep %>% 
+    filter(!str_detect(file, "2_regression_event|4_bacon_decomp_in|3_events_all_outc"))
+}
 
 ## order files now
 files_keep_order <- files_keep %>% 
@@ -72,13 +79,11 @@ cat("Running scripts on ", as.character(Sys.Date()), "\n")
 
 tic("Total run time")
 out <- files_keep_order %>% 
-  filter(full_path %in% out_c_err$full_path) %>% 
   ## don't download every time
   filter(file!="0_clean_us_states.R") %>% 
   # head(3) %>%
   mutate(run_result = map(full_path, ~source_throw(.)))
 out
-toc()
 
 ## clean
 out_c <- out %>% 
@@ -88,7 +93,9 @@ out_c <- out %>%
   mutate(run_time_elapsed = unlist(run_time_elapsed),
          has_error = map_lgl(error,  ~length(.) > 0), 
          error = map_chr(.data$error, ~if (length(.) == 0) NA_character_
-                         else paste(unique(.), collapse = " AND ")))
+                         else paste(unique(.), collapse = " AND ")),
+         run_time=Sys.time())
+toc()
 
 ## check errors
 any(out_c$has_error)
@@ -97,10 +104,7 @@ any(out_c$has_error)
 out_c %>% 
   arrange(desc(run_time_elapsed))
 
-total_time_min <- sum(out_c$run_time_elapsed) %/% 60
-total_time_hour <- total_time_min %/% (60)
-min_left <- total_time_min %% (60)
-paste("run in", total_time_hour, "hours", min_left, "minutes")
+
 
 ### export
 write_rds(out_c, "/home/covid19/degree_flexibility_covid_meta/results_rerun_raw.rds")
@@ -114,7 +118,15 @@ if(any(out_c$has_error)){
   out_c_err$error
 }
 
+total_time_min <- sum(out_c$run_time_elapsed) %/% 60
+total_time_hour <- total_time_min %/% (60)
+min_left <- total_time_min %% (60)
+paste("run in", total_time_hour, "hours", min_left, "minutes")
 
-
-
+### heavy files
+out_c %>% 
+  arrange(desc(run_time_elapsed)) %>% 
+  mutate(run_time_elapsed_min = run_time_elapsed%/% 60) %>% 
+  dplyr::select(file, run_time_elapsed_min) %>% 
+  filter(run_time_elapsed_min>10)
 

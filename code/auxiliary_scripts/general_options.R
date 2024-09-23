@@ -48,9 +48,13 @@ theme_jo <-   theme(plot.title = element_text(hjust=0, size=30, margin=margin(b=
                     legend.position="bottom",
                     legend.box = "horizontal",
                     panel.background = element_rect(fill = "white"),
+                    # panel.grid=element_line(color="#cccccc", size=0.2),
+                    # panel.grid.major=element_line(color="#cccccc", size=0.2),
+                    # panel.grid.minor=element_line(color="#cccccc", size=0.15),
                     panel.grid=element_line(color="#cccccc", size=0.2),
                     panel.grid.major=element_line(color="#cccccc", size=0.2),
-                    panel.grid.minor=element_line(color="#cccccc", size=0.15))  
+                    panel.grid.minor=element_line(color="#cccccc", size=0.15),
+                    )  
 
 fips_num_to_char <- function(x) str_pad(x, width=2, side = "left", pad = "0")
 if(FALSE) {

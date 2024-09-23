@@ -24,7 +24,7 @@ select<-dplyr::select
 
 options(scipen = 999) # Do not print scientific notation
 set.seed(0101)
-cores_number = 12
+cores_number = 6
 parallel::detectCores() 
 getDoParWorkers() #check
 registerDoParallel(cores=cores_number)
