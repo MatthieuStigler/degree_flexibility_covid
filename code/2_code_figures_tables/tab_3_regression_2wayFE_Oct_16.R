@@ -47,9 +47,12 @@ out <- formus_completely_home %>%
 ################################
 #'## Export to tex 
 ################################
+
 #
 stargaze_reg_df_all_diffLogs(df_regs = out,
                              df_data=data_reg,
+                             df_covars = table_covars,
+                             df_outcomes = table_vars,
                              path_base = "output_replicate/tab_3_reg_2FE_",
                              float = FALSE)
 

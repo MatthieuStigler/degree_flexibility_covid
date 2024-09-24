@@ -411,15 +411,23 @@ times.</p>
 One might want to adjust the <code>cores_number = 12</code> value to
 reduce RAM memory usage.</p>
 </div>
-<div id="folder-structure-quick-overview" class="section level2">
-<h2>Folder structure quick overview</h2>
+<div id="folder-structure" class="section level2">
+<h2>Folder structure</h2>
+<div id="quick-overview" class="section level3">
+<h3>quick overview</h3>
 <p>To produce the figures and tables in the paper, re-run scripts in the
 <code>code/2_code_figures_tables</code> folder. Each script contains in
 its name the specific figure/table of the paper. The output of these
 scripts is stored in the <code>output_replicate</code> folder.</p>
+<p>The file <code>code/master_run_all.R</code> can run all the files. By
+default (ie. with option <code>run_heavy=FALSE</code>), it runs only the
+final files to create the figures and tables. Setting
+<code>run_heavy=TRUE</code> will re-run the regression files, which are
+very slow and heavy (running <code>code/master_run_all.R</code> with
+<code>run_heavy=TRUE</code> took about 3 hours 40 on a server).</p>
 </div>
-<div id="folder-structure-full-description" class="section level2">
-<h2>Folder structure full description</h2>
+<div id="full-description" class="section level3">
+<h3>full description</h3>
 <p>The project is structured as following:</p>
 <pre class="bash"><code>├── code
 │   ├── 0_code_clean
@@ -472,6 +480,7 @@ preferable to store them before plotting.</li>
 <li><code>output_replicate</code>: output figures/tables</li>
 <li><code>renv</code>: this is a folder used by <code>renv</code></li>
 </ul>
+</div>
 <div id="specific-files" class="section level3">
 <h3>Specific files</h3>
 <p>Due to data sharing restrictions, some files cannot be run without

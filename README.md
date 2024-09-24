@@ -41,12 +41,16 @@ They use parallel processing, and thus can be very memory intensive. One might w
 
 
 
-## Folder structure quick overview
+## Folder structure 
+
+### quick overview
 
 To produce the figures and tables in the paper, re-run scripts in the `code/2_code_figures_tables` folder. 
 Each script contains in its name the specific figure/table of the paper. The output of these scripts is stored in the `output_replicate` folder. 
 
-## Folder structure full description
+The file `code/master_run_all.R` can run all the files. By default (ie. with option `run_heavy=FALSE`), it runs only the final files to create the figures and tables. Setting `run_heavy=TRUE` will re-run the regression files, which are very slow and heavy (running  `code/master_run_all.R` with `run_heavy=TRUE` took about 3 hours 40 on a server).
+
+### full description
 
 The project is structured as following:
 
@@ -119,6 +123,7 @@ Some data cannot be made publicly available.
 
 
 `0_data_raw` contains 5 files:
+
   - `all_cities_policy.rds`: collected by the authors and MTurk workers through 2020-05-01
   - `cities_min_policy.rds`: collected by the authors and MTurk workers through 2020-05-01
   - `clean_states_declarations.rds`: collected by the authors and MTurk workers through 2020-05-01

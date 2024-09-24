@@ -116,6 +116,9 @@ if(any(out_c$has_error)){
   out_c_err %>% 
     dplyr::select(-file, -folder, -order, -result)
   out_c_err$error
+  
+  ## strange error?
+  check <- source_throw(path=filter(files_keep_order, str_detect(file, "tab_3"))$full_path[[1]])
 }
 
 total_time_min <- sum(out_c$run_time_elapsed) %/% 60
