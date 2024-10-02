@@ -71,7 +71,7 @@ source_throw <- function (path, echo = TRUE, all.names = TRUE) {
   sys
 }
 
-out_TEST1 <- source_throw(path=files_keep_order$full_path[[3]])
+#out_TEST1 <- source_throw(path=files_keep_order$full_path[[3]])
 
 
 ### Now run
@@ -85,11 +85,13 @@ out <- files_keep_order %>%
   mutate(run_result = map(full_path, ~source_throw(.)))
 out
 
-## clean
+## clean the source data
 out_c <- out %>% 
+  ## flatten the list
   bind_cols(purrr::transpose(pull(., run_result)) %>% 
               as_tibble)%>% 
   dplyr::select(-run_result) %>% 
+  ## retrieve slots
   mutate(run_time_elapsed = unlist(run_time_elapsed),
          has_error = map_lgl(error,  ~length(.) > 0), 
          error = map_chr(.data$error, ~if (length(.) == 0) NA_character_
@@ -117,8 +119,6 @@ if(any(out_c$has_error)){
     dplyr::select(-file, -folder, -order, -result)
   out_c_err$error
   
-  ## strange error?
-  check <- source_throw(path=filter(files_keep_order, str_detect(file, "tab_3"))$full_path[[1]])
 }
 
 total_time_min <- sum(out_c$run_time_elapsed) %/% 60

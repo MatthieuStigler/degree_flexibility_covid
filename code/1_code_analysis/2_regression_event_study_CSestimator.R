@@ -14,6 +14,10 @@ my_packages <- c("tidyverse","magrittr")
 #install.packages(my_packages, repos = "http://cran.rstudio.com")
 lapply(my_packages, library, character.only = TRUE)
 #install.packages("did")
+
+#packageurl <- "https://cran.r-project.org/src/contrib/Archive/did/did_2.0.0.tar.gz"
+#install.packages(packageurl, repos=NULL, type="source")
+
 library("did")
 library("tictoc")
 library("doParallel")
@@ -36,8 +40,9 @@ options(stringsAsFactors = FALSE) ## Do not load strings as factors
 path_out = "data_replicate/3_data_analysis_output/regression_event_study_CS/"
 
 ## This needs to be manually adjusted! run twice
+#covariates = "_no_covariates" # first run
 covariates = "_covariates_covid" # second run
-covariates = "_no_covariates" # first run
+
 
 
 
@@ -107,7 +112,10 @@ if(covariates == "_no_covariates") {
   
 }
 
-policy_to_test <- c("County_ED","County_SIP", "StatePol_SIP")
+#policy_to_test <- c("County_ED","County_SIP", "StatePol_SIP")
+
+
+policy_to_test <- c("StatePol_SIP") # MANUAL TEST
 policy_to_test_CS <- paste0(policy_to_test,"_numeric")
 
 
@@ -172,13 +180,12 @@ if(FALSE){
 #-- Delete unused vars to speed up
 
 
-## outcome_var_index = 1
+## outcome_var_index = 2
 ## big loop
 foreach(outcome_var_index = 1:nrow(outcome_vars), .final = \(x) NULL) %dopar% {
 
   # issue: outcome_var_index = 57
-  # issue: individual_policy = policy_to_test_CS[3]
-  #individual_policy = "County_ED_numeric"
+  # issue: individual_policy = policy_to_test_CS
   
     # for(individual_policy in policy_to_test_CS ) {
   foreach(individual_policy = policy_to_test_CS ) %do% {
