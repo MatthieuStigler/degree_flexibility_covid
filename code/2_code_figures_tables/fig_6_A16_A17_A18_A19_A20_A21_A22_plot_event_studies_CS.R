@@ -22,16 +22,26 @@ pathin = "data_replicate/3_data_analysis_output/regression_event_study_CS/"
 
 
 
-## read all "aggregated_att", from did::aggte(did::att_gt())
-# all_event_studies_aggregated <- list.files("data_replicate/event_studies", full.names = TRUE, pattern = ".rds") %>% 
-all_event_studies_aggregated <- list.files("data_replicate/3_data_analysis_output/regression_event_study_CS/aggregated_att/", 
-                                           full.names = TRUE, pattern = ".rds") %>% 
-  as_tibble() %>% #head(10) %>%
+## output from code/1_code_analysis/2_regression_event_study_CSestimator.R
+all_event_studies_aggregated_files <- list.files("data_replicate/3_data_analysis_output/regression_event_study_CS/aggregated_att/", 
+                                                 full.names = TRUE, pattern = ".rds") %>% 
+  as_tibble() %>% 
   mutate(Control_group_CS = if_else(str_detect(value,"nevertreated"), "Never treated","Not yet treated")) %>%
   mutate(df = map2(value,Control_group_CS, ~readRDS(.x) %>% mutate(Control_group_CS = .y))) 
 
 all_event_studies_aggregated
-if(nrow(all_event_studies_aggregated)==0) stop("No files")
+
+if(nrow(all_event_studies_aggregated)==0) {
+  ### for replicability, otherwise re-run code/1_code_analysis/2_regression_event_study_CSestimator.R
+  unzip("data_replicate/3_data_analysis_output/regression_event_study_CS.zip",
+        exdir ="data_replicate/3_data_analysis_output/")
+  all_event_studies_aggregated_files <- list.files("data_replicate/3_data_analysis_output/regression_event_study_CS/aggregated_att/", 
+                                                   full.names = TRUE, pattern = ".rds") %>% 
+    as_tibble() %>% 
+    mutate(Control_group_CS = if_else(str_detect(value,"nevertreated"), "Never treated","Not yet treated")) %>%
+    mutate(df = map2(value,Control_group_CS, ~readRDS(.x) %>% mutate(Control_group_CS = .y))) 
+}
+
 
 ## clean/rename data
 binded_tidy <- bind_rows(all_event_studies_aggregated$df) %>%
@@ -71,7 +81,7 @@ all_coefs <- binded_tidy %>%
   mutate(Included_covariates = if_else(is.na(Included_covariates),"No controls",Included_covariates)) %>%
   filter(Control_group_CS == "Not yet treated") %>%
   mutate(Outcome_var_c = str_replace_all(Outcome_var,"_"," "))
-  
+
 
 all_coefs
 
@@ -83,7 +93,7 @@ my_palette <- c(my_palette,"#000000")
 
 #------ Completely home only
 evt_plot_comp_home_4 <- evt_plot(df = all_coefs %>% filter(str_detect(Outcome_var,"Completely_home")), 
-         color = Treatment_var, linetype=Included_covariates, errorbar = T) + 
+                                 color = Treatment_var, linetype=Included_covariates, errorbar = T) + 
   facet_grid(Outcome_var_c~Treatment_var, scales = "free") + #, fac2_var = Regression) 
   labs(color = "Policy",linetype = "Included covariates")+
   scale_color_manual(values = my_palette)+
@@ -97,7 +107,7 @@ ggsave(evt_plot_comp_home_4,
 
 # Device exposure only
 evt_plot_device_exp_4 <- evt_plot(df = all_coefs %>% filter(str_detect(Outcome_var,"Device_exposure")), 
-         color = Treatment_var, linetype=Included_covariates, errorbar = T) + 
+                                  color = Treatment_var, linetype=Included_covariates, errorbar = T) + 
   facet_grid(Outcome_var_c~Treatment_var, scales = "free") + #, fac2_var = Regression) 
   labs(color = "Policy",linetype = "Included covariates")+
   scale_color_manual(values = my_palette)
@@ -170,7 +180,7 @@ all_coefs_all_groups <- binded_tidy_by_groups %>%
   filter(Control_group_CS == "notyettreated") %>%
   mutate(Outcome_var_c = str_replace_all(Outcome_var,"_"," ")) %>%
   mutate(Group_f = as.character(as.Date(Group, origin = "1970-01-01"))) 
-  
+
 all_coefs_all_groups
 
 #-- Plot all ATTS
@@ -178,15 +188,15 @@ table(all_coefs_all_groups$Outcome_var)
 table(all_coefs_all_groups$Treatment_var)
 table(all_coefs_all_groups$Included_covariates)
 
-        #Atts_plots <- all_coefs_all_groups %>%  
-        #  filter(specification=="level" & 
-        #           Treatment_var=="State SIPO" & 
-        #           Included_covariates=="No controls") #& Included_covariates=="prcp + snow + tmean + Cases_dummy + Deaths_dummy") 
-        #
-        #evt_plot(df = Atts_plots, color = Group_f,errorbar = T,fac1_var = Outcome_var_c) + 
-        #  facet_wrap(~Source_name_signed, scales = "free") + #, fac2_var = Regression) 
-        #  labs(color = "State SIPO treatment group")
-        #ggsave(paste0(pathout,"did_cs_all_atts_level_no_controls_state_SIP.png"),width = 10, height = 10)
+#Atts_plots <- all_coefs_all_groups %>%  
+#  filter(specification=="level" & 
+#           Treatment_var=="State SIPO" & 
+#           Included_covariates=="No controls") #& Included_covariates=="prcp + snow + tmean + Cases_dummy + Deaths_dummy") 
+#
+#evt_plot(df = Atts_plots, color = Group_f,errorbar = T,fac1_var = Outcome_var_c) + 
+#  facet_wrap(~Source_name_signed, scales = "free") + #, fac2_var = Regression) 
+#  labs(color = "State SIPO treatment group")
+#ggsave(paste0(pathout,"did_cs_all_atts_level_no_controls_state_SIP.png"),width = 10, height = 10)
 
 #------ Just completely home
 
@@ -252,7 +262,7 @@ pre_tests_rejected_CS_byOutcome
 pre_tests_rejected_CS_byTransfo <- pre_tests_rejected_CS_raw%>% 
   filter(Source!="Google") %>% 
   mutate(transfo = paste0(str_to_title(specification), ": ",
-                         if_else(Included_covariates=="No controls", "No controls", "Controls"))) %>% 
+                          if_else(Included_covariates=="No controls", "No controls", "Controls"))) %>% 
   group_by(Treatment_var, transfo, specification) %>% 
   summarise(n_cases = n(),
             mean_reject_5 =mean(perc_reject>0.05),
@@ -285,10 +295,10 @@ pl_heat_CS_byTransfo <- pre_tests_rejected_CS_byTransfo %>%
         axis.text.y = element_text(hjust=0), # left align Y
         axis.ticks.y = element_blank(),
         legend.position = "none")
-  
+
 # pl_heat_CS_byTransfo+
 #   ggtitle("% of pre-test rejected at 5%/10% ")
-  
+
 ggsave(pl_heat_CS_byTransfo, filename = "output_replicate/fig_A22_CS_pre_trends_heatmap.png",
        height = 10, width = 12,dpi=300)
 
