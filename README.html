@@ -528,27 +528,334 @@ twice by changing one line of code, see line
 </div>
 <div id="details-on-each-data-source" class="section level3">
 <h3>Details on each Data Source</h3>
-<p><code>0_data_raw</code> contains 5 files: -
-<code>all_cities_policy.rds</code>: collected by the authors and MTurk
-workers through 2020-05-01 - <code>cities_min_policy.rds</code>:
-collected by the authors and MTurk workers through 2020-05-01 -
-<code>clean_states_declarations.rds</code>: collected by the authors and
-MTurk workers through 2020-05-01 -
-<code>counties_declarations_cleaned.rds</code> collected by the authors
-and MTurk workers through 2020-05-01, checked against NACO <a href="https://ce.naco.org/?dset=COVID-19&amp;ind=Emergency%20Declaration%20Types" class="uri">https://ce.naco.org/?dset=COVID-19&amp;ind=Emergency%20Declaration%20Types</a>
-- <code>counties_declarations_panel.rds</code>: collected by the authors
-and MTurk workers through 2020-05-01, checked against NACO <a href="https://ce.naco.org/?dset=COVID-19&amp;ind=Emergency%20Declaration%20Types" class="uri">https://ce.naco.org/?dset=COVID-19&amp;ind=Emergency%20Declaration%20Types</a>
-- <code>county_dex.csv</code>: downloaded 2020-04-26 from Github “<a href="https://raw.githubusercontent.com/COVIDExposureIndices/COVIDExposureIndices/master/dex_data/county_dex.csv" class="uri">https://raw.githubusercontent.com/COVIDExposureIndices/COVIDExposureIndices/master/dex_data/county_dex.csv</a>
-- <code>countypres_2000-2016.csv</code>: downloaded 2020-04-26 from MIT
-Election lab, <a href="https://electionlab.mit.edu/data" class="uri">https://electionlab.mit.edu/data</a> -
-<code>DAILY_WEATHER.dta</code>: downlaoded 2020-04-30 from Global
-Historical Climatology Network Daily <a href="https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily" class="uri">https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily</a>
-- <code>google_mobility_raw.csv</code>: downloaded 2020-04-26 from
-Google: <a href="https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv?cachebust=911a386b6c9c230f" class="uri">https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv?cachebust=911a386b6c9c230f</a>
-- <code>NYT_us_counties.csv</code>: downloaded 2020-04-26 from New York
-Times, <a href="https://github.com/nytimes/covid-19-data/archive/master.zip" class="uri">https://github.com/nytimes/covid-19-data/archive/master.zip</a>
-- <code>state_policies_dateissued_group.rds</code>: downloaded
-2020-04-26 from <a href="https://raw.githubusercontent.com/COVID19StatePolicy/SocialDistancing/master/data/USstatesCov19distancingpolicy.csv" class="uri">https://raw.githubusercontent.com/COVID19StatePolicy/SocialDistancing/master/data/USstatesCov19distancingpolicy.csv</a></p>
+<p><code>0_data_raw</code> contains 5 files:</p>
+<ul>
+<li><code>all_cities_policy.rds</code>: collected by the authors and
+MTurk workers through 2020-05-01</li>
+<li><code>cities_min_policy.rds</code>: collected by the authors and
+MTurk workers through 2020-05-01</li>
+<li><code>clean_states_declarations.rds</code>: collected by the authors
+and MTurk workers through 2020-05-01</li>
+<li><code>counties_declarations_cleaned.rds</code> collected by the
+authors and MTurk workers through 2020-05-01, checked against NACO <a href="https://ce.naco.org/?dset=COVID-19&amp;ind=Emergency%20Declaration%20Types" class="uri">https://ce.naco.org/?dset=COVID-19&amp;ind=Emergency%20Declaration%20Types</a></li>
+<li><code>counties_declarations_panel.rds</code>: collected by the
+authors and MTurk workers through 2020-05-01, checked against NACO <a href="https://ce.naco.org/?dset=COVID-19&amp;ind=Emergency%20Declaration%20Types" class="uri">https://ce.naco.org/?dset=COVID-19&amp;ind=Emergency%20Declaration%20Types</a></li>
+<li><code>county_dex.csv</code>: downloaded 2020-04-26 from Github “<a href="https://raw.githubusercontent.com/COVIDExposureIndices/COVIDExposureIndices/master/dex_data/county_dex.csv" class="uri">https://raw.githubusercontent.com/COVIDExposureIndices/COVIDExposureIndices/master/dex_data/county_dex.csv</a></li>
+<li><code>countypres_2000-2016.csv</code>: downloaded 2020-04-26 from
+MIT Election lab, <a href="https://electionlab.mit.edu/data" class="uri">https://electionlab.mit.edu/data</a></li>
+<li><code>DAILY_WEATHER.dta</code>: downlaoded 2020-04-30 from Global
+Historical Climatology Network Daily <a href="https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily" class="uri">https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily</a></li>
+<li><code>google_mobility_raw.csv</code>: downloaded 2020-04-26 from
+Google: <a href="https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv?cachebust=911a386b6c9c230f" class="uri">https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv?cachebust=911a386b6c9c230f</a></li>
+<li><code>NYT_us_counties.csv</code>: downloaded 2020-04-26 from New
+York Times, <a href="https://github.com/nytimes/covid-19-data/archive/master.zip" class="uri">https://github.com/nytimes/covid-19-data/archive/master.zip</a></li>
+<li><code>state_policies_dateissued_group.rds</code>: downloaded
+2020-04-26 from <a href="https://raw.githubusercontent.com/COVID19StatePolicy/SocialDistancing/master/data/USstatesCov19distancingpolicy.csv" class="uri">https://raw.githubusercontent.com/COVID19StatePolicy/SocialDistancing/master/data/USstatesCov19distancingpolicy.csv</a></li>
+</ul>
+<table>
+<colgroup>
+<col width="8%" />
+<col width="10%" />
+<col width="69%" />
+<col width="8%" />
+<col width="2%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data name</th>
+<th>Data files</th>
+<th>Description</th>
+<th>Location</th>
+<th>Provided</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>All city-level MRP</td>
+<td>all_cities_policy.rds</td>
+<td>City-level mobility-restricting policies, collected by the authors
+and MTurk workers through 2020-05-01</td>
+<td>data_replicate/0_raw_data/</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>Earliest city-level MRP</td>
+<td>cities_min_policy.rds</td>
+<td>City-level first mobility-restricting policies, collected by the
+authors and MTurk workers through 2020-05-01</td>
+<td>data_replicate/0_raw_data/</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>All states MRP</td>
+<td>clean_states_declarations.rds</td>
+<td>State-level mobility-restricting policies, collected by the authors
+and MTurk workers through 2020-05-01</td>
+<td>data_replicate/0_raw_data/</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>All counties MRP</td>
+<td>counties_declarations_cleaned.rds</td>
+<td>County-level mobility-restricting policies, collected by the authors
+and MTurk workers through 2020-05-01, checked and completed with NACO
+data: <a href="https://ce.naco.org/?dset=COVID-19&amp;ind=Emergency%20Declaration%20Types">NACO</a></td>
+<td>data_replicate/0_raw_data/</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Counties MRP, panel format</td>
+<td>counties_declarations_panel.rds</td>
+<td>County-level mobility-restricting policies in a panel format,
+collected by the authors and MTurk workers through 2020-05-01, checked
+and completed with NACO data: <a href="https://ce.naco.org/?dset=COVID-19&amp;ind=Emergency%20Declaration%20Types">NACO</a></td>
+<td>data_replicate/0_raw_data/</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>PlaceIQ Device exposure metric</td>
+<td>county_dex.csv</td>
+<td>PlaceIQ device exposure data, downloaded 2020-04-26 from <a href="https://raw.githubusercontent.com/COVIDExposureIndices/COVIDExposureIndices/master/dex_data/county_dex.csv">Github</a></td>
+<td>data_replicate/0_raw_data/</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>County presidential election data</td>
+<td>countypres_2000-2016.csv</td>
+<td>Presidential election data, downloaded 2020-04-26 from MIT Election
+lab, <a href="https://electionlab.mit.edu/data">MIT Election
+Lab</a></td>
+<td>data_replicate/0_raw_data/</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>Daily weather data</td>
+<td>DAILY_WEATHER.dta</td>
+<td>Daily weather data, downloaded 2020-04-30 from Global Historical
+Climatology Network Daily <a href="https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily">GHCN</a></td>
+<td>data_replicate/0_raw_data/</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Google mobility data</td>
+<td>google_mobility_raw.csv</td>
+<td>Google mobility data downloaded 2020-04-26 from <a href="https://www.gstatic.com/covid19/mobility/Global_Mobility_Report.csv?cachebust=911a386b6c9c230f">Google
+Mobility Report</a></td>
+<td>data_replicate/0_raw_data/</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>New York Times covid tracker data</td>
+<td>NYT_us_counties.csv</td>
+<td>Covid tracker data, downloaded 2020-04-26 from New York Times, <a href="https://github.com/nytimes/covid-19-data/archive/master.zip">NYT</a></td>
+<td>data_replicate/0_raw_data/</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>State-level MRP complement data</td>
+<td>state_policies_dateissued_group.rds</td>
+<td>State level covid policies, downloaded 2020-04-26 from <a href="https://raw.githubusercontent.com/COVID19StatePolicy/SocialDistancing/master/data/USstatesCov19distancingpolicy.csv">COVID19StatePolicy</a></td>
+<td>data_replicate/0_raw_data/</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>Safegraph mobility data</td>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Cuebiq mobility data</td>
+<td></td>
+<td></td>
+<td></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col width="18%" />
+<col width="20%" />
+<col width="40%" />
+<col width="15%" />
+<col width="4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data files</th>
+<th>Description</th>
+<th>How created</th>
+<th>Location</th>
+<th>Provided</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>US_states_dataOnly.csv</td>
+<td>Cleaned US states</td>
+<td>0_code_clean/0_clean_us_states.R</td>
+<td>data_replicate/1_data_intermediate</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>cases_mortality_nyt.rds</td>
+<td>Cleaned COVID cases</td>
+<td>0_code_clean/0_clean_cases_mortality_NYT.R</td>
+<td>data_replicate/1_data_intermediate</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>county_pres_elections_2016.rds</td>
+<td>Cleaned presidential elections data</td>
+<td>0_code_clean/0_clean_county_presidential_elections.R</td>
+<td>data_replicate/1_data_intermediate</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>declarations_counties_states_cases_dates.rds</td>
+<td>Cleaned counties declaration data</td>
+<td>0_code_clean/1_1_merge_counties_states_declarations_create_panel.R</td>
+<td>data_replicate/1_data_intermediate</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>declarations_counties_states_dates.rds</td>
+<td>Clean counties and states declarations</td>
+<td>0_code_clean/1_1_merge_counties_states_declarations_create_panel.R</td>
+<td>data_replicate/1_data_intermediate</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>declarations_counties_states_panel.rds</td>
+<td>Cleaned states declarations, panel format</td>
+<td>0_code_clean/1_1_merge_counties_states_declarations_create_panel.R</td>
+<td>data_replicate/1_data_intermediate</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>google_mobility_clean.csv</td>
+<td>Cleaned Google mobility</td>
+<td>0_code_clean/0_clean_googleMob_csv.R</td>
+<td>data_replicate/1_data_intermediate</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>placeIQ_county_device_exposure.rds</td>
+<td>Cleaned device exposure (PlaceIQ) data</td>
+<td>0_code_clean/0_clean_placeIQ_county_dex.R</td>
+<td>data_replicate/1_data_intermediate</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>us_acs5_sf.rds</td>
+<td>Cleaned county census data</td>
+<td>0_code_clean/0_clean_map_us_counties.R</td>
+<td>data_replicate/1_data_intermediate</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>weather_cleaned.rds</td>
+<td>Cleaned weather data</td>
+<td>0_code_clean/0_clean_weather.R</td>
+<td>data_replicate/1_data_intermediate</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>vars_names_and_formulas</td>
+<td>Set of files manually constructed for models</td>
+<td>1_code_analysis/0_1_generate_table_regression_formula.R,
+0_2_generate_table_covariates.R, etc.</td>
+<td>data_replicate/1_data_intermediate</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>Cuebiq cleaned</td>
+<td>Cleaned Cuebiq mobility data</td>
+<td>0_code_clean/0_clean_cuebiq.R</td>
+<td></td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Sagegraph mobility data aggregated</td>
+<td>Aggregated Safegraph data to the county level</td>
+<td>0_code_clean/0a_clean_safegraph_aggregate_SD_county.R</td>
+<td></td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>Sagegraph mobility data aggregated/cleaned</td>
+<td>Clean county-level aggregated Safegraph data</td>
+<td>0_code_clean/0b_clean_safegraph_county_level_SD.R</td>
+<td></td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>merged_panel_did.rds</td>
+<td>Merged panel for static two-way fixed effects</td>
+<td>0_code_clean/1_2_merge_main_datasets.R</td>
+<td>data_replicate/2_data_final/</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>merged_panel_did_long.rds</td>
+<td>Merged panel, long version for fixed effects</td>
+<td>0_code_clean/1_2_merge_main_datasets.R</td>
+<td>data_replicate/2_data_final/</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>merged_panel_event_dummies.rds</td>
+<td>Merged panel for dynamic event studies models</td>
+<td>0_code_clean/1_3_merge_main_datasets_panel_event.R</td>
+<td>data_replicate/2_data_final/</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>regression_event_study_CS</td>
+<td>Folder for Callaway-Sant’Anna regression objects</td>
+<td>1_code_analysis/2_regression_event_study_CSestimator.R</td>
+<td>data_replicate/3_data_analysis_output/</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>regression_event_study_vanilla</td>
+<td>Folder for two-way fixed effects event studies</td>
+<td>1_code_analysis/3_events_all_outcomes_all_specs_F_run.R</td>
+<td>data_replicate/3_data_analysis_output/</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>all_bacon_decomps_individual_policies.rds</td>
+<td>Goodman-Bacon decomposition outputs</td>
+<td>1_code_analysis/4_bacon_decomp_individual_policies.R</td>
+<td>data_replicate/3_data_analysis_output/</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>all_regs_tidy_binded.rds</td>
+<td>Standard static two-way fixed effects output</td>
+<td>1_code_analysis/1_regression_2wayFE.R</td>
+<td>data_replicate/3_data_analysis_output/</td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>regression_event_study_CS_reference.zip</td>
+<td>Callaway-Sant’Anna regression output (zipped)</td>
+<td>1_code_analysis/2_regression_event_study_CSestimator.R</td>
+<td>data_replicate/3_data_analysis_output/</td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>regression_event_study_vanilla_reference.zip</td>
+<td>Dynamic event studies output (zipped)</td>
+<td>1_code_analysis/3_events_all_outcomes_all_specs_F_run.R</td>
+<td>data_replicate/3_data_analysis_output/</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
