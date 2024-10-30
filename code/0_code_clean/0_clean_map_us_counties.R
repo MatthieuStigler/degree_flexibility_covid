@@ -1,7 +1,7 @@
 # "Clean map US counties and vars ACS5"
 
 
-my_packages <- c("rgeos","raster","tidyverse","magrittr","haven","readxl","tools","usethis","sf","tidycensus","tigris","units")
+my_packages <- c("raster","tidyverse","magrittr","haven","readxl","tools","usethis","sf","tidycensus","tigris","units")
 #install.packages(my_packages, repos = "http://cran.rstudio.com")
 lapply(my_packages, library, character.only = TRUE)
 
