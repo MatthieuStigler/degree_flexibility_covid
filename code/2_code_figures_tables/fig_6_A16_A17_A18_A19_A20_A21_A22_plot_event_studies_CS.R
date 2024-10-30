@@ -23,7 +23,7 @@ pathin = "data_replicate/3_data_analysis_output/regression_event_study_CS/"
 
 
 ## output from code/1_code_analysis/2_regression_event_study_CSestimator.R
-all_event_studies_aggregated_files <- list.files("data_replicate/3_data_analysis_output/regression_event_study_CS/aggregated_att/", 
+all_event_studies_aggregated <- list.files("data_replicate/3_data_analysis_output/regression_event_study_CS/aggregated_att/", 
                                                  full.names = TRUE, pattern = ".rds") %>% 
   as_tibble() %>% 
   mutate(Control_group_CS = if_else(str_detect(value,"nevertreated"), "Never treated","Not yet treated")) %>%
@@ -35,7 +35,7 @@ if(nrow(all_event_studies_aggregated)==0) {
   ### for replicability, otherwise re-run code/1_code_analysis/2_regression_event_study_CSestimator.R
   unzip("data_replicate/3_data_analysis_output/regression_event_study_CS.zip",
         exdir ="data_replicate/3_data_analysis_output/")
-  all_event_studies_aggregated_files <- list.files("data_replicate/3_data_analysis_output/regression_event_study_CS/aggregated_att/", 
+  all_event_studies_aggregated <- list.files("data_replicate/3_data_analysis_output/regression_event_study_CS/aggregated_att/", 
                                                    full.names = TRUE, pattern = ".rds") %>% 
     as_tibble() %>% 
     mutate(Control_group_CS = if_else(str_detect(value,"nevertreated"), "Never treated","Not yet treated")) %>%
